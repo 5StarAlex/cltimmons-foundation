@@ -30,21 +30,32 @@
               <p id="officerBio">Daughter of Cathy Lance-Timmons, Tatyana holds a Master of Social Work (MSW) and a Master of Business Administration (MBA), and is a Licensed Master Social Worker (LMSW) and Licensed Clinical Social Worker Associate (LCSWA). She founded The Cathy Lance Timmons Foundation as a way to give back to the community her mother advocated for and loved so deeply, keeping her legacy alive and continuing to encourage others in positive, meaningful ways. Her hope is that the foundation will reach communities everywhere, offering support through its community impact and education initiatives.</p>
               <div class="officer-actions">
                 <a class="gold-button" id="officerEmail" href="mailto:info@cltimmonsfoundation.org">Email</a>
+                <button class="outline-button read-more-button" id="officerReadMore" type="button">Read More</button>
               </div>
             </div>
           </div>
 
           <div class="officer-tabs" role="tablist" aria-label="Foundation officers">
             <button class="officer-tab active" type="button" role="tab" aria-selected="true" data-officer="founder">Founder &amp; Board Director</button>
-            <button class="officer-tab" type="button" role="tab" aria-selected="false" data-officer="president">President</button>
-            <button class="officer-tab" type="button" role="tab" aria-selected="false" data-officer="vice-president">Vice President</button>
-            <button class="officer-tab" type="button" role="tab" aria-selected="false" data-officer="secretary">Secretary</button>
-            <button class="officer-tab" type="button" role="tab" aria-selected="false" data-officer="treasurer">Treasurer</button>
-            <button class="officer-tab" type="button" role="tab" aria-selected="false" data-officer="technology">Director of Technology</button>
-            <button class="officer-tab" type="button" role="tab" aria-selected="false" data-officer="board-member">Board Member</button>
+            <button class="officer-tab" type="button" role="tab" aria-selected="false" data-officer="strategic-marketing">Chair of Strategic Marketing</button>
+            <button class="officer-tab" type="button" role="tab" aria-selected="false" data-officer="cfo-eric">CFO Eric J. Lance</button>
+            <button class="officer-tab" type="button" role="tab" aria-selected="false" data-officer="community-affairs">Chief of Community Affairs</button>
+            <button class="officer-tab" type="button" role="tab" aria-selected="false" data-officer="cfo-keasia">CFO Ke'Asia Lance</button>
+            <button class="officer-tab" type="button" role="tab" aria-selected="false" data-officer="technology">Technology &amp; Communications</button>
+            <button class="officer-tab" type="button" role="tab" aria-selected="false" data-officer="education-affairs">Chief of Educational Affairs</button>
+            <button class="officer-tab" type="button" role="tab" aria-selected="false" data-officer="chief-advisor">Chief Advisor</button>
           </div>
         </div>
       </section>
+
+      <div class="bio-modal" id="bioModal" aria-hidden="true">
+        <div class="bio-modal-panel" role="dialog" aria-modal="true" aria-labelledby="bioModalTitle">
+          <button class="bio-modal-close" id="bioModalClose" type="button" aria-label="Close biography">&times;</button>
+          <p class="eyebrow" id="bioModalRole">Our Leadership</p>
+          <h2 id="bioModalTitle">Officer Biography</h2>
+          <p id="bioModalText"></p>
+        </div>
+      </div>
     </main>
     <footer class="site-footer"><div class="footer-inner"><p>&copy; 2026 The Cathy Lance Timmons Foundation.</p><div class="footer-links"><a href="contact.html">Contact</a><a href="get-involved.html">Get Involved</a><a href="donate.html">Donate</a></div></div></footer>
     <script src="script.js"></script>
