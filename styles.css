@@ -957,6 +957,13 @@ body.modal-open {
   resize: vertical;
 }
 
+.contact-status {
+  margin: -4px 0 0;
+  color: rgba(45, 32, 24, 0.72);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

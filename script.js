@@ -133,6 +133,13 @@ const officerProfiles = {
     noPhoto: true,
     email: "mailto:info@cltimmonsfoundation.org",
     bio: "Biography coming soon."
+  },
+  "chief-advisor-brenda": {
+    role: "Chief Advisor",
+    name: "Brenda Perkins",
+    noPhoto: true,
+    email: "mailto:info@cltimmonsfoundation.org",
+    bio: "Biography coming soon."
   }
 };
 
@@ -232,3 +239,29 @@ document.addEventListener("keydown", (event) => {
 });
 
 renderOfficerProfile(activeOfficerProfile);
+
+const contactForm = document.querySelector("[data-contact-form]");
+
+if (contactForm) {
+  const contactStatus = contactForm.querySelector("[data-contact-status]");
+
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!contactForm.reportValidity()) return;
+
+    const formData = new FormData(contactForm);
+    const name = String(formData.get("name") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const message = String(formData.get("message") || "").trim();
+    const emailTo = contactForm.dataset.emailTo || "info@cltimmonsfoundation.org";
+    const subject = `Website contact from ${name}`;
+    const body = [`Name: ${name}`, `Email: ${email}`, "", "Message:", message].join("\n");
+
+    window.location.href = `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    if (contactStatus) {
+      contactStatus.textContent = "Your email app should open with the message ready to send.";
+    }
+  });
+}
