@@ -174,7 +174,7 @@ function renderOfficerProfile(profile) {
   officerName.textContent = profile.name;
   officerBio.textContent = profile.bio;
   officerEmail.href = profile.email;
-  officerEmail.textContent = `Email ${profile.name.split(" ")[0]}`;
+  officerEmail.textContent = "Email";
 
   if (officerReadMore) {
     officerReadMore.hidden = !profile.fullBio;
