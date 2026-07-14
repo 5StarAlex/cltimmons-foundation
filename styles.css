@@ -834,6 +834,19 @@ a {
   text-transform: uppercase;
 }
 
+.compact-action {
+  min-height: 44px;
+  margin-top: 18px;
+  padding: 11px 18px;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+}
+
+.deep .outline-button {
+  color: #fffaf4;
+  border-color: rgba(255, 250, 244, 0.52);
+}
+
 .read-more-button[hidden] {
   display: none;
 }
@@ -942,6 +955,7 @@ body.modal-open {
 }
 
 .contact-form input,
+.contact-form select,
 .contact-form textarea {
   width: 100%;
   padding: 15px 16px;
@@ -950,6 +964,10 @@ body.modal-open {
   background: #fffaf2;
   color: var(--ink);
   font: inherit;
+}
+
+.contact-form select {
+  cursor: pointer;
 }
 
 .contact-form textarea {
