@@ -299,3 +299,156 @@ if (contactForm) {
       });
   });
 }
+
+const scholarshipForm = document.querySelector("[data-scholarship-form]");
+const scholarshipDraftKey = "cltimmons-scholarship-application-draft";
+const scholarshipEmail = "scholarships@cltimmons.org";
+
+function getFormPayload(form) {
+  const payload = {};
+  const formData = new FormData(form);
+
+  formData.forEach((value, key) => {
+    payload[key] = String(value).trim();
+  });
+
+  form.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+    payload[checkbox.name] = checkbox.checked ? checkbox.value || "Yes" : "";
+  });
+
+  return payload;
+}
+
+function formatScholarshipEmail(payload) {
+  const fullName = [payload.firstName, payload.middleName, payload.lastName].filter(Boolean).join(" ");
+  const lines = [
+    "Scholarship Application",
+    "",
+    `Scholarship: ${payload.scholarshipProgram || ""}`,
+    `Application term: ${payload.applicationTerm || ""}`,
+    "",
+    "Applicant",
+    `Name: ${fullName}`,
+    `Date of birth: ${payload.dateOfBirth || ""}`,
+    `Email: ${payload.email || ""}`,
+    `Phone: ${payload.phone || ""}`,
+    `Address: ${payload.address || ""}, ${payload.city || ""}, ${payload.state || ""} ${payload.zip || ""}`,
+    `County: ${payload.county || ""}`,
+    "",
+    "Academic Information",
+    `Current school: ${payload.currentSchool || ""}`,
+    `School type: ${payload.schoolType || ""}`,
+    `Expected graduation: ${payload.graduationDate || ""}`,
+    `GPA: ${payload.gpa || ""}`,
+    `Student ID: ${payload.studentId || ""}`,
+    `Planned institution: ${payload.plannedInstitution || ""}`,
+    `Major or field: ${payload.major || ""}`,
+    `Degree or credential: ${payload.degree || ""}`,
+    `Enrollment status: ${payload.enrollmentStatus || ""}`,
+    "",
+    "Service, Leadership, and Need",
+    `Activities: ${payload.activities || ""}`,
+    `Honors: ${payload.honors || ""}`,
+    `Financial need: ${payload.financialNeed || ""}`,
+    "",
+    "Foundation Values Paragraph",
+    payload.valuesParagraph || "",
+    "",
+    "Reference",
+    `Name: ${payload.referenceName || ""}`,
+    `Relationship: ${payload.referenceRelationship || ""}`,
+    `Email: ${payload.referenceEmail || ""}`,
+    `Phone: ${payload.referencePhone || ""}`,
+    "",
+    "Documents",
+    `Parchment acknowledgement: ${payload.parchmentAcknowledgement || ""}`,
+    `Document notes: ${payload.documentNotes || ""}`,
+    "",
+    "Certification",
+    `Accuracy certification: ${payload.accuracyCertification || ""}`,
+    `Communication consent: ${payload.communicationConsent || ""}`
+  ];
+
+  return lines.join("\n");
+}
+
+if (scholarshipForm) {
+  const scholarshipStatus = scholarshipForm.querySelector("[data-scholarship-status]");
+  const clearDraftButton = scholarshipForm.querySelector("[data-clear-scholarship-draft]");
+  const savedDraft = window.localStorage.getItem(scholarshipDraftKey);
+
+  if (savedDraft) {
+    try {
+      const draft = JSON.parse(savedDraft);
+      Object.entries(draft).forEach(([name, value]) => {
+        const field = scholarshipForm.elements[name];
+        if (!field) return;
+        if (field.type === "checkbox") {
+          field.checked = Boolean(value);
+        } else {
+          field.value = value;
+        }
+      });
+    } catch {
+      window.localStorage.removeItem(scholarshipDraftKey);
+    }
+  }
+
+  scholarshipForm.addEventListener("input", () => {
+    window.localStorage.setItem(scholarshipDraftKey, JSON.stringify(getFormPayload(scholarshipForm)));
+    if (scholarshipStatus) {
+      scholarshipStatus.textContent = "Draft saved on this device.";
+    }
+  });
+
+  if (clearDraftButton) {
+    clearDraftButton.addEventListener("click", () => {
+      window.localStorage.removeItem(scholarshipDraftKey);
+      scholarshipForm.reset();
+      if (scholarshipStatus) {
+        scholarshipStatus.textContent = "Draft cleared.";
+      }
+    });
+  }
+
+  scholarshipForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!scholarshipForm.reportValidity()) return;
+
+    const payload = getFormPayload(scholarshipForm);
+    const fullName = [payload.firstName, payload.lastName].filter(Boolean).join(" ");
+    const subject = `Scholarship application from ${fullName}`;
+    const body = formatScholarshipEmail(payload);
+    const mailtoUrl = `mailto:${scholarshipEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    if (scholarshipStatus) {
+      scholarshipStatus.textContent = "Submitting your application...";
+    }
+
+    fetch("/api/scholarship", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("Scholarship API unavailable");
+        return response.json();
+      })
+      .then(() => {
+        window.localStorage.removeItem(scholarshipDraftKey);
+        scholarshipForm.reset();
+        if (scholarshipStatus) {
+          scholarshipStatus.textContent = `Thank you. Your application was saved and sent to ${scholarshipEmail}. Remember to send official documents through Parchment.`;
+        }
+      })
+      .catch(() => {
+        window.location.href = mailtoUrl;
+        if (scholarshipStatus) {
+          scholarshipStatus.textContent = `Your email app should open with your application addressed to ${scholarshipEmail}. Your saved draft will remain on this device.`;
+        }
+      });
+  });
+}

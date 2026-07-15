@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Scholarship | The Cathy Lance Timmons Foundation</title>
+    <title>Scholarship Application | The Cathy Lance Timmons Foundation</title>
+    <meta name="description" content="Apply for The Cathy Lance Timmons Foundation scholarship.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -12,8 +13,191 @@
   <body>
     <header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html" aria-label="The Cathy Lance Timmons Foundation home"><img src="assets/CLT Logo and Title.jpg" alt="The Cathy Lance Timmons Foundation"></a><button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span></button><nav class="site-nav" aria-label="Primary navigation"><a href="index.html">Home</a><a href="about.html">About Us</a><a href="impact.html">Impact &amp; News</a><a href="programs.html">Programs</a><a href="scholarship.html">Scholarship</a><a href="get-involved.html">Get Involved</a><a href="contact.html">Contact</a><a class="nav-donate" href="donate.html">Donate</a></nav></div></header>
     <main>
-      <section class="page-hero"><div class="page-hero-inner"><p class="eyebrow">Scholarship</p><h1>Investing in the next generation of behavioral health professionals.</h1><p>Because every person deserves a real chance, the foundation supports students who are committing their careers to serving others.</p></div></section>
-      <section class="section alt"><div class="section-inner"><p class="eyebrow">Scholarship Support</p><h2>Education is one way Cathy's legacy reaches forward.</h2><div class="content-list"><article class="content-item"><h3>The Cathy Lance Timmons Scholarship</h3><p>This scholarship supports students pursuing continuing education with a heart for service, fairness, and community care.</p><a class="outline-button compact-action" href="mailto:scholarships@cltimmons.org?subject=Cathy%20Lance%20Timmons%20Scholarship%20Application%20Request">Apply for this scholarship</a></article><article class="content-item"><h3>The 311 Scholarship</h3><p>The 311 Scholarship helps fund students preparing to serve others, strengthening the behavioral health workforce pipeline.</p><a class="outline-button compact-action" href="mailto:scholarships@cltimmons.org?subject=311%20Scholarship%20Application%20Request">Apply for this scholarship</a></article><article class="content-item"><h3>Academic Support</h3><p>The foundation pairs financial support with encouragement, educational partnerships, and a belief in each student's ability to grow.</p><a class="outline-button compact-action" href="mailto:scholarships@cltimmons.org?subject=Academic%20Support%20Inquiry">Ask about support</a></article><article class="content-item"><h3>Service-Minded Futures</h3><p>By investing in students, we extend Cathy's reach into communities she cared about and into the lives they will one day serve.</p><a class="outline-button compact-action" href="mailto:scholarships@cltimmons.org?subject=Scholarship%20Program%20Inquiry">Contact scholarships</a></article></div></div></section>
+      <section class="page-hero scholarship-hero">
+        <div class="page-hero-inner">
+          <p class="eyebrow">Scholarship Application</p>
+          <h1>Investing in students who lead with service, dignity, and care.</h1>
+          <p>Use this application to apply for foundation scholarship support. Your progress saves automatically on this device until you submit or clear the form.</p>
+          <a class="gold-button" href="#scholarship-application">Apply Now</a>
+        </div>
+      </section>
+
+      <section class="section alt scholarship-overview">
+        <div class="section-inner">
+          <p class="eyebrow">Before You Begin</p>
+          <h2>A complete application helps the review committee understand your goals and your commitment to community.</h2>
+          <div class="application-note-grid">
+            <article class="application-note">
+              <h3>What to Prepare</h3>
+              <p>Have your school information, GPA, intended program, activities, service experience, financial need summary, and one reference ready.</p>
+            </article>
+            <article class="application-note">
+              <h3>Saved Drafts</h3>
+              <p>The form autosaves as you type. If you close the page and return using the same browser, your draft will still be here.</p>
+            </article>
+            <article class="application-note">
+              <h3>Official Documents</h3>
+              <p>Near the end, you will confirm that you understand how to send required documents through Parchment to the foundation scholarship inbox.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="scholarship-application">
+        <div class="section-inner">
+          <form class="scholarship-form" data-scholarship-form>
+            <div class="form-heading">
+              <p class="eyebrow">Application Form</p>
+              <h2>Student Information</h2>
+              <p class="lead">Fields marked with an asterisk are required. The information you submit is saved to the application database and emailed to the scholarship team.</p>
+            </div>
+
+            <fieldset>
+              <legend>Scholarship Selection</legend>
+              <div class="form-grid two">
+                <label>Scholarship applying for *
+                  <select name="scholarshipProgram" required>
+                    <option value="">Select one</option>
+                    <option value="The Cathy Lance Timmons Scholarship">The Cathy Lance Timmons Scholarship</option>
+                    <option value="The 311 Scholarship">The 311 Scholarship</option>
+                    <option value="General Foundation Scholarship Support">General Foundation Scholarship Support</option>
+                  </select>
+                </label>
+                <label>Application term *
+                  <select name="applicationTerm" required>
+                    <option value="">Select one</option>
+                    <option value="Fall 2026">Fall 2026</option>
+                    <option value="Spring 2027">Spring 2027</option>
+                    <option value="Summer 2027">Summer 2027</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Applicant Details</legend>
+              <div class="form-grid three">
+                <label>First name *<input type="text" name="firstName" autocomplete="given-name" required></label>
+                <label>Middle name<input type="text" name="middleName" autocomplete="additional-name"></label>
+                <label>Last name *<input type="text" name="lastName" autocomplete="family-name" required></label>
+              </div>
+              <div class="form-grid three">
+                <label>Date of birth *<input type="date" name="dateOfBirth" required></label>
+                <label>Email *<input type="email" name="email" autocomplete="email" required></label>
+                <label>Phone *<input type="tel" name="phone" autocomplete="tel" required></label>
+              </div>
+              <div class="form-grid two">
+                <label>Street address *<input type="text" name="address" autocomplete="street-address" required></label>
+                <label>City *<input type="text" name="city" autocomplete="address-level2" required></label>
+              </div>
+              <div class="form-grid three">
+                <label>State *<input type="text" name="state" autocomplete="address-level1" maxlength="2" required></label>
+                <label>ZIP code *<input type="text" name="zip" autocomplete="postal-code" required></label>
+                <label>County<input type="text" name="county"></label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Academic Information</legend>
+              <div class="form-grid two">
+                <label>Current school *<input type="text" name="currentSchool" required></label>
+                <label>School type *
+                  <select name="schoolType" required>
+                    <option value="">Select one</option>
+                    <option value="High school senior">High school senior</option>
+                    <option value="College undergraduate">College undergraduate</option>
+                    <option value="Graduate student">Graduate student</option>
+                    <option value="Technical or certificate program">Technical or certificate program</option>
+                    <option value="Returning adult learner">Returning adult learner</option>
+                  </select>
+                </label>
+              </div>
+              <div class="form-grid three">
+                <label>Expected graduation date *<input type="month" name="graduationDate" required></label>
+                <label>Cumulative GPA *<input type="number" name="gpa" min="0" max="5" step="0.01" required></label>
+                <label>Student ID, if applicable<input type="text" name="studentId"></label>
+              </div>
+              <div class="form-grid two">
+                <label>College, university, or program you plan to attend *<input type="text" name="plannedInstitution" required></label>
+                <label>Intended major or field of study *<input type="text" name="major" required></label>
+              </div>
+              <div class="form-grid two">
+                <label>Degree or credential sought *
+                  <select name="degree" required>
+                    <option value="">Select one</option>
+                    <option value="Certificate">Certificate</option>
+                    <option value="Associate degree">Associate degree</option>
+                    <option value="Bachelor's degree">Bachelor's degree</option>
+                    <option value="Master's degree">Master's degree</option>
+                    <option value="Doctoral or professional degree">Doctoral or professional degree</option>
+                  </select>
+                </label>
+                <label>Enrollment status *
+                  <select name="enrollmentStatus" required>
+                    <option value="">Select one</option>
+                    <option value="Full time">Full time</option>
+                    <option value="Part time">Part time</option>
+                    <option value="Undecided">Undecided</option>
+                  </select>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Service, Leadership, and Need</legend>
+              <label>Community service, employment, leadership, or extracurricular activities *
+                <textarea name="activities" required placeholder="List roles, organizations, dates, responsibilities, and any leadership or service impact."></textarea>
+              </label>
+              <label>Honors, awards, certifications, or special recognition
+                <textarea name="honors" placeholder="Include academic honors, service awards, certifications, or relevant achievements."></textarea>
+              </label>
+              <label>Financial need summary *
+                <textarea name="financialNeed" required placeholder="Briefly describe how scholarship support would help you continue your education."></textarea>
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <legend>Foundation Values Paragraph</legend>
+              <label>Personal paragraph *
+                <textarea class="essay-field" name="valuesParagraph" minlength="250" required placeholder="In one thoughtful paragraph, describe how you have shown kindness, dignity, service, fairness, or care for your community. Explain how receiving this scholarship would help you carry forward the values honored by The Cathy Lance Timmons Foundation."></textarea>
+              </label>
+              <p class="field-help">Minimum 250 characters. Write in your own voice and connect your goals to service, dignity, education, and community care.</p>
+            </fieldset>
+
+            <fieldset>
+              <legend>Reference</legend>
+              <div class="form-grid three">
+                <label>Reference name *<input type="text" name="referenceName" required></label>
+                <label>Reference relationship *<input type="text" name="referenceRelationship" required></label>
+                <label>Reference email *<input type="email" name="referenceEmail" required></label>
+              </div>
+              <label>Reference phone<input type="tel" name="referencePhone"></label>
+            </fieldset>
+
+            <fieldset class="document-instructions">
+              <legend>Required Documents</legend>
+              <p>After submitting this application, go to Parchment and add <strong>scholarships@cltimmons.org</strong> as the recipient so Parchment sends your official transcript and any required resume or supporting document directly to the foundation scholarship team.</p>
+              <label class="checkbox-label"><input type="checkbox" name="parchmentAcknowledgement" value="Yes" required> I understand that I must use Parchment and enter scholarships@cltimmons.org as the recipient for official documents.</label>
+              <label>Optional document notes
+                <textarea name="documentNotes" placeholder="Use this space for notes about documents, timing, school office contacts, or resume/transcript availability."></textarea>
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <legend>Certification</legend>
+              <label class="checkbox-label"><input type="checkbox" name="accuracyCertification" value="Yes" required> I certify that the information in this application is accurate to the best of my knowledge.</label>
+              <label class="checkbox-label"><input type="checkbox" name="communicationConsent" value="Yes" required> I agree that The Cathy Lance Timmons Foundation may contact me about this application.</label>
+            </fieldset>
+
+            <div class="form-actions">
+              <button class="gold-button" type="submit">Submit Application</button>
+              <button class="outline-button" type="button" data-clear-scholarship-draft>Clear Draft</button>
+            </div>
+            <p class="contact-status" data-scholarship-status aria-live="polite">Your draft is saved automatically on this device.</p>
+          </form>
+        </div>
+      </section>
     </main>
     <footer class="site-footer"><div class="footer-inner"><p>&copy; 2026 The Cathy Lance Timmons Foundation.</p><div class="footer-links"><a href="contact.html">Contact</a><a href="get-involved.html">Get Involved</a><a href="donate.html">Donate</a></div></div></footer>
     <script src="script.js"></script>
