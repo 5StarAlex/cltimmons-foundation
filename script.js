@@ -265,11 +265,6 @@ if (contactForm) {
     const message = String(formData.get("message") || "").trim();
     const emailTo = contactRecipients[topic] || contactRecipients.administration;
     const topicLabel = topic ? topic.replace(/-/g, " ") : "general";
-    const subject = `Website ${topicLabel} inquiry from ${name}`;
-    const body = [`Name: ${name}`, `Email: ${email}`, "", "Message:", message].join("\n");
-
-    const mailtoUrl = `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
     if (contactStatus) {
       contactStatus.textContent = "Sending your message...";
     }
@@ -282,7 +277,11 @@ if (contactForm) {
       body: JSON.stringify({ name, email, topic, message })
     })
       .then((response) => {
-        if (!response.ok) throw new Error("Contact API unavailable");
+        if (!response.ok) {
+          return response.json().catch(() => ({})).then((data) => {
+            throw new Error(data.details || data.error || "Contact API unavailable");
+          });
+        }
         return response.json();
       })
       .then(() => {
@@ -291,10 +290,9 @@ if (contactForm) {
           contactStatus.textContent = `Thank you. Your message was sent to ${emailTo}.`;
         }
       })
-      .catch(() => {
-        window.location.href = mailtoUrl;
+      .catch((error) => {
         if (contactStatus) {
-          contactStatus.textContent = `Your email app should open with this message addressed to ${emailTo}.`;
+          contactStatus.textContent = `Message was not sent. ${error.message}`;
         }
       });
   });
