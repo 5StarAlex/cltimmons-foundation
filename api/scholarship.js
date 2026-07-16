@@ -1,4 +1,6 @@
 const scholarshipRecipient = "scholarships@cltimmons.org";
+const defaultFromEmail = "The Cathy Lance Timmons Foundation <noreply@cltimmons.org>";
+const resendTimeoutMs = 15000;
 
 const requiredFields = [
   "scholarshipProgram",
@@ -33,6 +35,17 @@ const requiredFields = [
 
 function sanitize(value) {
   return String(value || "").replace(/\u0000/g, "").trim();
+}
+
+async function parseResendError(resendResponse) {
+  const contentType = resendResponse.headers.get("content-type") || "";
+
+  if (contentType.includes("application/json")) {
+    const data = await resendResponse.json().catch(() => null);
+    return data?.message || data?.error || JSON.stringify(data);
+  }
+
+  return resendResponse.text().catch(() => "Unknown Resend error");
 }
 
 function normalizeApplication(body) {
@@ -125,26 +138,38 @@ export default async function handler(request, response) {
   }
 
   const fullName = [application.firstName, application.lastName].filter(Boolean).join(" ");
-  const fromEmail = process.env.CONTACT_FROM_EMAIL || "The Cathy Lance Timmons Foundation <onboarding@resend.dev>";
+  const fromEmail = process.env.CONTACT_FROM_EMAIL || defaultFromEmail;
   const subject = `Scholarship application from ${fullName}`;
 
-  const resendResponse = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      from: fromEmail,
-      to: [scholarshipRecipient],
-      reply_to: application.email,
-      subject,
-      text: buildApplicationText(application)
-    })
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), resendTimeoutMs);
+  let resendResponse;
+  try {
+    resendResponse = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        "Content-Type": "application/json"
+      },
+      signal: controller.signal,
+      body: JSON.stringify({
+        from: fromEmail,
+        to: [scholarshipRecipient],
+        reply_to: application.email,
+        subject,
+        text: buildApplicationText(application)
+      })
+    });
+  } catch (error) {
+    response.status(504).json({ error: "Email provider request timed out or could not be reached." });
+    return;
+  } finally {
+    clearTimeout(timeout);
+  }
 
   if (!resendResponse.ok) {
-    response.status(502).json({ error: "Email provider rejected the application." });
+    const resendError = await parseResendError(resendResponse);
+    response.status(502).json({ error: "Email provider rejected the application.", details: resendError });
     return;
   }
 

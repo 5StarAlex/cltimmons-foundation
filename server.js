@@ -3,8 +3,33 @@ const fs = require("fs");
 const path = require("path");
 
 const root = __dirname;
+
+function loadLocalEnv() {
+  const envPath = path.join(root, ".env.local");
+  if (!fs.existsSync(envPath)) return;
+
+  const lines = fs.readFileSync(envPath, "utf8").split(/\r?\n/);
+  lines.forEach((line) => {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) return;
+
+    const separatorIndex = trimmed.indexOf("=");
+    if (separatorIndex === -1) return;
+
+    const key = trimmed.slice(0, separatorIndex).trim();
+    const value = trimmed.slice(separatorIndex + 1).trim();
+    if (key && !process.env[key]) {
+      process.env[key] = value;
+    }
+  });
+}
+
+loadLocalEnv();
+
 const port = Number(process.env.PORT || 8000);
 const scholarshipRecipient = "scholarships@cltimmons.org";
+const defaultFromEmail = "The Cathy Lance Timmons Foundation <noreply@cltimmons.org>";
+const resendTimeoutMs = 15000;
 const recipients = {
   administration: "admin@cltimmons.org",
   partnerships: "partnerships@cltimmons.org",
@@ -67,29 +92,51 @@ function normalizePayload(body) {
   return payload;
 }
 
-async function sendEmail({ to, replyTo, subject, text }) {
-  if (!process.env.RESEND_API_KEY) {
-    return { skipped: true };
+async function parseResendError(resendResponse) {
+  const contentType = resendResponse.headers.get("content-type") || "";
+
+  if (contentType.includes("application/json")) {
+    const data = await resendResponse.json().catch(() => null);
+    return data?.message || data?.error || JSON.stringify(data);
   }
 
-  const fromEmail = process.env.CONTACT_FROM_EMAIL || "The Cathy Lance Timmons Foundation <onboarding@resend.dev>";
-  const resendResponse = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      from: fromEmail,
-      to: [to],
-      reply_to: replyTo,
-      subject,
-      text
-    })
-  });
+  return resendResponse.text().catch(() => "Unknown Resend error");
+}
+
+async function sendEmail({ to, replyTo, subject, text }) {
+  if (!process.env.RESEND_API_KEY) {
+    throw new Error("Email provider is not configured.");
+  }
+
+  const fromEmail = process.env.CONTACT_FROM_EMAIL || defaultFromEmail;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), resendTimeoutMs);
+  let resendResponse;
+  try {
+    resendResponse = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        "Content-Type": "application/json"
+      },
+      signal: controller.signal,
+      body: JSON.stringify({
+        from: fromEmail,
+        to: [to],
+        reply_to: replyTo,
+        subject,
+        text
+      })
+    });
+  } catch (error) {
+    throw new Error("Email provider request timed out or could not be reached.");
+  } finally {
+    clearTimeout(timeout);
+  }
 
   if (!resendResponse.ok) {
-    throw new Error("Email provider rejected the message");
+    const resendError = await parseResendError(resendResponse);
+    throw new Error(`Email provider rejected the message: ${resendError}`);
   }
 
   return { sent: true };

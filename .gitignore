@@ -1,0 +1,6 @@
+.env
+.env.*
+!.env.example
+data/
+server.out.log
+server.err.log

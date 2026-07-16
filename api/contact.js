@@ -6,8 +6,22 @@ const recipients = {
   technology: "technology@cltimmons.org"
 };
 
+const defaultFromEmail = "The Cathy Lance Timmons Foundation <noreply@cltimmons.org>";
+const resendTimeoutMs = 15000;
+
 function sanitize(value) {
   return String(value || "").replace(/[\r\n]+/g, " ").trim();
+}
+
+async function parseResendError(resendResponse) {
+  const contentType = resendResponse.headers.get("content-type") || "";
+
+  if (contentType.includes("application/json")) {
+    const data = await resendResponse.json().catch(() => null);
+    return data?.message || data?.error || JSON.stringify(data);
+  }
+
+  return resendResponse.text().catch(() => "Unknown Resend error");
 }
 
 export default async function handler(request, response) {
@@ -33,7 +47,7 @@ export default async function handler(request, response) {
     return;
   }
 
-  const fromEmail = process.env.CONTACT_FROM_EMAIL || "The Cathy Lance Timmons Foundation <onboarding@resend.dev>";
+  const fromEmail = process.env.CONTACT_FROM_EMAIL || defaultFromEmail;
   const subject = `Website ${topic || "general"} inquiry from ${name}`;
   const text = [
     `Name: ${name}`,
@@ -44,23 +58,35 @@ export default async function handler(request, response) {
     message
   ].join("\n");
 
-  const resendResponse = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      from: fromEmail,
-      to: [recipient],
-      reply_to: email,
-      subject,
-      text
-    })
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), resendTimeoutMs);
+  let resendResponse;
+  try {
+    resendResponse = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        "Content-Type": "application/json"
+      },
+      signal: controller.signal,
+      body: JSON.stringify({
+        from: fromEmail,
+        to: [recipient],
+        reply_to: email,
+        subject,
+        text
+      })
+    });
+  } catch (error) {
+    response.status(504).json({ error: "Email provider request timed out or could not be reached." });
+    return;
+  } finally {
+    clearTimeout(timeout);
+  }
 
   if (!resendResponse.ok) {
-    response.status(502).json({ error: "Email provider rejected the message." });
+    const resendError = await parseResendError(resendResponse);
+    response.status(502).json({ error: "Email provider rejected the message.", details: resendError });
     return;
   }
 
