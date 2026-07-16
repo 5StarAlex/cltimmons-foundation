@@ -317,59 +317,6 @@ function getFormPayload(form) {
   return payload;
 }
 
-function formatScholarshipEmail(payload) {
-  const fullName = [payload.firstName, payload.middleName, payload.lastName].filter(Boolean).join(" ");
-  const lines = [
-    "Scholarship Application",
-    "",
-    `Scholarship: ${payload.scholarshipProgram || ""}`,
-    `Application term: ${payload.applicationTerm || ""}`,
-    "",
-    "Applicant",
-    `Name: ${fullName}`,
-    `Date of birth: ${payload.dateOfBirth || ""}`,
-    `Email: ${payload.email || ""}`,
-    `Phone: ${payload.phone || ""}`,
-    `Address: ${payload.address || ""}, ${payload.city || ""}, ${payload.state || ""} ${payload.zip || ""}`,
-    `County: ${payload.county || ""}`,
-    "",
-    "Academic Information",
-    `Current school: ${payload.currentSchool || ""}`,
-    `School type: ${payload.schoolType || ""}`,
-    `Expected graduation: ${payload.graduationDate || ""}`,
-    `GPA: ${payload.gpa || ""}`,
-    `Student ID: ${payload.studentId || ""}`,
-    `Planned institution: ${payload.plannedInstitution || ""}`,
-    `Major or field: ${payload.major || ""}`,
-    `Degree or credential: ${payload.degree || ""}`,
-    `Enrollment status: ${payload.enrollmentStatus || ""}`,
-    "",
-    "Service, Leadership, and Need",
-    `Activities: ${payload.activities || ""}`,
-    `Honors: ${payload.honors || ""}`,
-    `Financial need: ${payload.financialNeed || ""}`,
-    "",
-    "Foundation Values Paragraph",
-    payload.valuesParagraph || "",
-    "",
-    "Reference",
-    `Name: ${payload.referenceName || ""}`,
-    `Relationship: ${payload.referenceRelationship || ""}`,
-    `Email: ${payload.referenceEmail || ""}`,
-    `Phone: ${payload.referencePhone || ""}`,
-    "",
-    "Documents",
-    `Parchment acknowledgement: ${payload.parchmentAcknowledgement || ""}`,
-    `Document notes: ${payload.documentNotes || ""}`,
-    "",
-    "Certification",
-    `Accuracy certification: ${payload.accuracyCertification || ""}`,
-    `Communication consent: ${payload.communicationConsent || ""}`
-  ];
-
-  return lines.join("\n");
-}
-
 if (scholarshipForm) {
   const scholarshipStatus = scholarshipForm.querySelector("[data-scholarship-status]");
   const clearDraftButton = scholarshipForm.querySelector("[data-clear-scholarship-draft]");
@@ -416,10 +363,6 @@ if (scholarshipForm) {
 
     const payload = getFormPayload(scholarshipForm);
     const fullName = [payload.firstName, payload.lastName].filter(Boolean).join(" ");
-    const subject = `Scholarship application from ${fullName}`;
-    const body = formatScholarshipEmail(payload);
-    const mailtoUrl = `mailto:${scholarshipEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
     if (scholarshipStatus) {
       scholarshipStatus.textContent = "Submitting your application...";
     }
@@ -432,7 +375,11 @@ if (scholarshipForm) {
       body: JSON.stringify(payload)
     })
       .then((response) => {
-        if (!response.ok) throw new Error("Scholarship API unavailable");
+        if (!response.ok) {
+          return response.json().catch(() => ({})).then((data) => {
+            throw new Error(data.details || data.error || "Scholarship API unavailable");
+          });
+        }
         return response.json();
       })
       .then(() => {
@@ -442,10 +389,9 @@ if (scholarshipForm) {
           scholarshipStatus.textContent = `Thank you. Your application was saved and sent to ${scholarshipEmail}. Remember to send official documents through Parchment.`;
         }
       })
-      .catch(() => {
-        window.location.href = mailtoUrl;
+      .catch((error) => {
         if (scholarshipStatus) {
-          scholarshipStatus.textContent = `Your email app should open with your application addressed to ${scholarshipEmail}. Your saved draft will remain on this device.`;
+          scholarshipStatus.textContent = `Application was not sent. ${error.message}`;
         }
       });
   });
