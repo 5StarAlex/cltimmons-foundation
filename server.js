@@ -37,6 +37,17 @@ const recipients = {
   socials: "socials@cltimmons.org",
   technology: "technology@cltimmons.org"
 };
+const officerRecipients = {
+  founder: { email: "tlance@cltimmons.org", name: "Tatyana Lance" },
+  "strategic-marketing": { email: "ellance@cltimmons.org", name: "Elizabeth Lance" },
+  "cfo-eric": { email: "elance@cltimmons.org", name: "Eric J. Lance" },
+  "community-affairs": { email: "omerchant@cltimmons.org", name: "Oscar Merchant III" },
+  "cfo-keasia": { email: "klance@cltimmons.org", name: "Ke'Asia Lance" },
+  technology: { email: "alance@cltimmons.org", name: "Alexander Lance" },
+  "education-affairs": { email: "mwilliamson@cltimmons.org", name: "Michiko Williamson" },
+  "chief-advisor": { email: "pbrown@cltimmons.org", name: "Parish Brown" },
+  "chief-advisor-brenda": { email: "bperkins@cltimmons.org", name: "Brenda Perkins" }
+};
 
 const types = {
   ".html": "text/html; charset=utf-8",
@@ -241,19 +252,27 @@ function validateScholarshipApplication(application) {
 
 async function handleContact(req, res) {
   const body = normalizePayload(await readRequestBody(req));
-  const recipient = recipients[body.topic] || recipients.administration;
+  const officerRecipient = officerRecipients[body.recipient];
+  const recipient = officerRecipient?.email || recipients[body.topic] || recipients.administration;
 
   if (!body.name || !body.email || !body.message) {
     sendJson(res, 400, { error: "Name, email, and message are required." });
     return;
   }
 
-  const topicLabel = body.topic || "general";
+  const topicLabel = officerRecipient ? `inquiry for ${officerRecipient.name}` : `${body.topic || "general"} inquiry`;
   await sendEmail({
     to: recipient,
     replyTo: body.email,
-    subject: `Website ${topicLabel} inquiry from ${body.name}`,
-    text: [`Name: ${body.name}`, `Email: ${body.email}`, `Topic: ${topicLabel}`, "", "Message:", body.message].join("\n")
+    subject: `Website ${topicLabel} from ${body.name}`,
+    text: [
+      `Name: ${body.name}`,
+      `Email: ${body.email}`,
+      officerRecipient ? `Recipient: ${officerRecipient.name} <${officerRecipient.email}>` : `Topic: ${body.topic || "general"}`,
+      "",
+      "Message:",
+      body.message
+    ].join("\n")
   });
 
   sendJson(res, 200, { ok: true, recipient });

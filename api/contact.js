@@ -6,6 +6,18 @@ const recipients = {
   technology: "technology@cltimmons.org"
 };
 
+const officerRecipients = {
+  founder: { email: "tlance@cltimmons.org", name: "Tatyana Lance" },
+  "strategic-marketing": { email: "ellance@cltimmons.org", name: "Elizabeth Lance" },
+  "cfo-eric": { email: "elance@cltimmons.org", name: "Eric J. Lance" },
+  "community-affairs": { email: "omerchant@cltimmons.org", name: "Oscar Merchant III" },
+  "cfo-keasia": { email: "klance@cltimmons.org", name: "Ke'Asia Lance" },
+  technology: { email: "alance@cltimmons.org", name: "Alexander Lance" },
+  "education-affairs": { email: "mwilliamson@cltimmons.org", name: "Michiko Williamson" },
+  "chief-advisor": { email: "pbrown@cltimmons.org", name: "Parish Brown" },
+  "chief-advisor-brenda": { email: "bperkins@cltimmons.org", name: "Brenda Perkins" }
+};
+
 const defaultFromEmail = "The Cathy Lance Timmons Foundation <noreply@cltimmons.org>";
 const resendTimeoutMs = 15000;
 
@@ -34,8 +46,10 @@ export default async function handler(request, response) {
   const name = sanitize(request.body?.name);
   const email = sanitize(request.body?.email);
   const topic = sanitize(request.body?.topic);
+  const recipientKey = sanitize(request.body?.recipient);
   const message = String(request.body?.message || "").trim();
-  const recipient = recipients[topic] || recipients.administration;
+  const officerRecipient = officerRecipients[recipientKey];
+  const recipient = officerRecipient?.email || recipients[topic] || recipients.administration;
 
   if (!name || !email || !message) {
     response.status(400).json({ error: "Name, email, and message are required." });
@@ -48,11 +62,12 @@ export default async function handler(request, response) {
   }
 
   const fromEmail = process.env.CONTACT_FROM_EMAIL || defaultFromEmail;
-  const subject = `Website ${topic || "general"} inquiry from ${name}`;
+  const topicLabel = officerRecipient ? `inquiry for ${officerRecipient.name}` : `${topic || "general"} inquiry`;
+  const subject = `Website ${topicLabel} from ${name}`;
   const text = [
     `Name: ${name}`,
     `Email: ${email}`,
-    `Topic: ${topic || "general"}`,
+    officerRecipient ? `Recipient: ${officerRecipient.name} <${officerRecipient.email}>` : `Topic: ${topic || "general"}`,
     "",
     "Message:",
     message

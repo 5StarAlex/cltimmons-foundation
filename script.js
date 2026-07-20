@@ -69,7 +69,8 @@ const officerProfiles = {
     name: "Tatyana Lance",
     photo: "assets/Taty.jpeg",
     alt: "Tatyana Lance",
-    email: "mailto:tlance@cltimmons.org?subject=Website%20inquiry%20for%20Tatyana%20Lance",
+    email: "tlance@cltimmons.org",
+    contactUrl: "officer-contact.html?person=founder",
     bio: "Daughter of Cathy Lance-Timmons, Tatyana founded The Cathy Lance Timmons Foundation to give back to the community her mother loved and advocated for so deeply. With graduate training in social work and business, she leads with a commitment to keeping Cathy's legacy alive through education, community impact, and meaningful service.",
     fullBio: "Daughter of Cathy Lance-Timmons, Tatyana holds a Master of Social Work (MSW) and a Master of Business Administration (MBA), and is a Licensed Master Social Worker (LMSW) and Licensed Clinical Social Worker Associate (LCSWA). She founded The Cathy Lance Timmons Foundation as a way to give back to the community her mother advocated for and loved so deeply, keeping her legacy alive and continuing to encourage others in positive, meaningful ways.\n\nCathy meant the world to her, and her love and passion for others lives on through this work. Her hope is that the foundation will reach communities everywhere, offering support through its community impact and education initiatives."
   },
@@ -78,7 +79,8 @@ const officerProfiles = {
     name: "Elizabeth Lance",
     photo: "assets/liz.jpeg",
     alt: "Elizabeth Lance",
-    email: "mailto:ellance@cltimmons.org?subject=Website%20inquiry%20for%20Elizabeth%20Lance",
+    email: "ellance@cltimmons.org",
+    contactUrl: "officer-contact.html?person=strategic-marketing",
     bio: "Elizabeth Lance is a community engagement and marketing professional who helps build meaningful partnerships, strengthen outreach, and expand the Foundation's reach. As Chair of Strategic Marketing, she brings experience in strategic communications, relationship building, and community-centered storytelling.",
     fullBio: "Elizabeth Lance is a community engagement and marketing professional with a passion for building meaningful partnerships that strengthen organizations and create lasting impact. As Chair of Strategic Marketing, she brings expertise in strategic communications, relationship building, and community outreach to help expand the Foundation's reach and further its mission.\n\nElizabeth currently serves as Community Marketing Manager for Rycor Heating & Cooling, where she develops and manages community partnerships, leads marketing initiatives, and represents the company throughout the Carolinas. Her work focuses on connecting businesses, nonprofits, schools, and community organizations to create lasting value for the communities they serve.\n\nShe earned a Bachelor of Science in Child Development and Family Studies from North Carolina A&T State University. Her educational background and professional experience have instilled a deep appreciation for the transformative power of education and community support. She is passionate about advancing opportunities that encourage lifelong learning, strengthen families, and empower individuals to reach their fullest potential.\n\nElizabeth is honored to serve on the Board of Directors as Chair of Strategic Marketing for the Cathy Lance Timmons Foundation. She is proud to carry forward the legacy of her late Cousin Cathy, rooted in compassion, service, and an unwavering belief in the power of education to change lives. Through strategic storytelling, community partnerships, and meaningful outreach, Elizabeth is committed to ensuring Cousin Cathy's legacy continues to inspire others, expand access to continuing education, and create opportunities that positively impact future generations."
   },
@@ -87,7 +89,8 @@ const officerProfiles = {
     name: "Eric J. Lance",
     photo: "assets/eric.jpg",
     alt: "Eric J. Lance",
-    email: "mailto:elance@cltimmons.org?subject=Website%20inquiry%20for%20Eric%20Lance",
+    email: "elance@cltimmons.org",
+    contactUrl: "officer-contact.html?person=cfo-eric",
     bio: "Eric J. Lance is a healthcare executive, educator, and community leader dedicated to service through leadership, education, and community engagement. As Chief Financial Officer, he supports the Foundation's commitment to responsible growth, educational excellence, and lasting community impact.",
     fullBio: "Eric J. Lance is a healthcare executive, educator, and community leader dedicated to serving others through leadership, education, and community engagement. He earned a Bachelor of Science in Health Education and Services from SC State University and a Master of Healthcare Administration from Webster University. He currently serves as a Director of Business Development for MUSC Health in the Pee Dee Division.\n\nIn addition to his healthcare leadership, Eric serves as an adjunct instructor and is actively involved in civic and alumni organizations, where he works to promote educational opportunities and strengthen communities.\n\nAs a member of the Foundation Board, he is honored to carry forward the legacy of service, leadership, and educational excellence established by the Foundation's namesake, believing that education and service are powerful tools for creating lasting change."
   },
@@ -96,7 +99,8 @@ const officerProfiles = {
     name: "Oscar Merchant III",
     photo: "assets/oscar.jpeg",
     alt: "Oscar Merchant III",
-    email: "mailto:omerchant@cltimmons.org?subject=Website%20inquiry%20for%20Oscar%20Merchant",
+    email: "omerchant@cltimmons.org",
+    contactUrl: "officer-contact.html?person=community-affairs",
     bio: "Oscar Merchant III is a dedicated public servant with more than 14 years of law enforcement experience and a deep commitment to community engagement. As Chief of Community Affairs, he brings servant leadership, mentorship, and relationship-building experience to the Foundation's outreach work.",
     fullBio: "Oscar Merchant III is a dedicated public servant with more than 14 years of experience in law enforcement, proudly serving the City of Florence Police Department. Throughout his career, he has worked in patrol, community engagement, code enforcement, and specialized enforcement units while building strong relationships with residents, businesses, and community organizations.\n\nOscar is passionate about servant leadership and believes in leading through integrity, accountability, and service to others. He has served as a mentor to youth, helped lead numerous community outreach initiatives, and has been recognized as Officer of the Year twice and Officer of the Quarter. He is also a certified drone pilot and bicycle officer, continually seeking opportunities to grow professionally and better serve the community.\n\nIn addition to his professional experience, Oscar is pursuing a bachelor's degree while focusing his studies on leadership and organizational development. His commitment to lifelong learning, collaboration, and community involvement has prepared him to contribute effectively in a board leadership role.\n\nOscar and his wife, Sharrie, are proud parents of two children and are committed to making Florence a safer, stronger, and more connected community."
   },
@@ -105,7 +109,8 @@ const officerProfiles = {
     name: "Ke'Asia Lance, MBA",
     photo: "assets/keasia.JPEG",
     alt: "Ke'Asia Lance",
-    email: "mailto:klance@cltimmons.org?subject=Website%20inquiry%20for%20Ke'Asia%20Lance",
+    email: "klance@cltimmons.org",
+    contactUrl: "officer-contact.html?person=cfo-keasia",
     bio: "Ke'Asia Lance is a strategic business and healthcare operations leader with experience in financial oversight, project management, and organizational leadership. As Chief Financial Officer, she brings a strong background in budgeting, fiscal accountability, and operational excellence.",
     fullBio: "Ke'Asia Lance is a strategic business and healthcare operations leader with extensive experience in financial oversight, project management, and organizational leadership. As Chief Financial Officer, she brings a strong background in budgeting, fiscal accountability, and operational excellence.\n\nKe'Asia currently serves as a Project Leader at GE HealthCare, where she leads cross-functional initiatives, develops standardized processes, and drives operational improvements across the U.S. and Canada.\n\nHer financial leadership began at Winthrop University, where she served as the Allocation Administrator for the Student Allocation Committee. In this role, she oversaw an annual budget of more than $1 million, managing the equitable allocation of funding to over 100 student organizations. This experience strengthened her commitment to transparency, accountability, and responsible financial management.\n\nKe'Asia earned a Master of Business Administration with a focus in Project Management from the University of South Carolina and a Bachelor of Science in Health Care Management from Winthrop University. She is passionate about using strategic leadership and sound financial stewardship to strengthen organizations and create lasting community impact.\n\nKe'Asia is honored to serve on the Board of Directors as Chief Financial Officer for the Cathy Lance Timmons Foundation. Inspired by the life and legacy of her late aunt, Cathy Lance, she is committed to carrying forward the values Cathy instilled in her: the importance of lifelong learning, giving back to the community, and leading with a servant's heart. Ke'Asia looks forward to helping advance the Foundation's mission and ensuring that Cathy Lance's legacy continues to empower and inspire future generations."
   },
@@ -114,7 +119,8 @@ const officerProfiles = {
     name: "Alexander Lance",
     photo: "assets/alexander.jpeg",
     alt: "Alexander Lance",
-    email: "mailto:alance@cltimmons.org?subject=Website%20inquiry%20for%20Alexander%20Lance",
+    email: "alance@cltimmons.org",
+    contactUrl: "officer-contact.html?person=technology",
     bio: "Alexander Lance is a Computer Science major and Applied Mathematics minor at Francis Marion University. As Director of Technology & Communications, he supports the Foundation's digital presence and helps use technology to create access, connection, and opportunity.",
     fullBio: "Alexander Lance is a Computer Science major and Applied Mathematics minor at Francis Marion University. As a Machine Learning Research Student and McNair Scholar, his work focuses on artificial intelligence, software engineering, and data-driven technologies, with experience in convolutional neural networks, IoT sensor systems, environmental monitoring, and full-stack web development. Through his academic pursuits and community service as a member of the Francis Marion University Honors Program, Alexander is committed to using technology to solve meaningful problems and create opportunities for others.\n\nAs a member of The Cathy Lance Timmons Foundation Board, Alexander is proud to help preserve the legacy of his grandmother, whose compassion, generosity, and belief in the power of education and service continue to inspire him. He is honored to support the Foundation's mission of empowering future generations through leadership, educational opportunities, and lasting community impact."
   },
@@ -123,7 +129,8 @@ const officerProfiles = {
     name: "Michiko Williamson",
     photo: "assets/michiko.PNG",
     alt: "Michiko Williamson",
-    email: "mailto:mwilliamson@cltimmons.org?subject=Website%20inquiry%20for%20Michiko%20Williamson",
+    email: "mwilliamson@cltimmons.org",
+    contactUrl: "officer-contact.html?person=education-affairs",
     bio: "Michiko Williamson serves as Chief of Educational Affairs, helping guide the Foundation's education-centered work and its commitment to expanding access to continuing education opportunities. Her leadership supports the mission to encourage lifelong learning and honor Cathy's belief in the power of education.",
     fullBio: "Michiko Williamson serves as Chief of Educational Affairs for The Cathy Lance Timmons Foundation. In this role, she helps guide the Foundation's education-centered work and its commitment to expanding access to continuing education opportunities.\n\nHer leadership supports the mission to encourage lifelong learning, strengthen families, and honor Cathy's belief in the power of education to change lives."
   },
@@ -131,14 +138,16 @@ const officerProfiles = {
     role: "Chief Advisor",
     name: "Parish Brown",
     noPhoto: true,
-    email: "mailto:pbrown@cltimmons.org?subject=Website%20inquiry%20for%20Parish%20Brown",
+    email: "pbrown@cltimmons.org",
+    contactUrl: "officer-contact.html?person=chief-advisor",
     bio: "Biography coming soon."
   },
   "chief-advisor-brenda": {
     role: "Chief Advisor",
     name: "Brenda Perkins",
     noPhoto: true,
-    email: "mailto:bperkins@cltimmons.org?subject=Website%20inquiry%20for%20Brenda%20Perkins",
+    email: "bperkins@cltimmons.org",
+    contactUrl: "officer-contact.html?person=chief-advisor-brenda",
     bio: "Biography coming soon."
   }
 };
@@ -173,7 +182,7 @@ function renderOfficerProfile(profile) {
   officerRole.textContent = profile.role;
   officerName.textContent = profile.name;
   officerBio.textContent = profile.bio;
-  officerEmail.href = profile.email;
+  officerEmail.href = profile.contactUrl;
   officerEmail.textContent = "Email";
 
   if (officerReadMore) {
@@ -252,6 +261,40 @@ const contactRecipients = {
 
 if (contactForm) {
   const contactStatus = contactForm.querySelector("[data-contact-status]");
+  const isOfficerContactForm = contactForm.hasAttribute("data-officer-contact-form");
+  const recipientField = contactForm.querySelector("[data-recipient-field]");
+  const recipientDisplay = contactForm.querySelector("[data-recipient-display]");
+  const topicField = contactForm.elements.topic;
+  const contactHeroTitle = document.querySelector("[data-contact-hero-title]");
+  const contactHeroText = document.querySelector("[data-contact-hero-text]");
+
+  if (isOfficerContactForm) {
+    const personKey = new URLSearchParams(window.location.search).get("person") || "founder";
+    const normalizedPersonKey = Object.keys(officerProfiles).includes(personKey) ? personKey : "founder";
+    const profile = officerProfiles[normalizedPersonKey] || officerProfiles.founder;
+
+    if (recipientField) {
+      recipientField.value = normalizedPersonKey;
+    }
+    if (recipientDisplay) {
+      recipientDisplay.value = `${profile.name} (${profile.email})`;
+    }
+    if (contactHeroTitle) {
+      contactHeroTitle.textContent = `Contact ${profile.name}.`;
+    }
+    if (contactHeroText) {
+      contactHeroText.textContent = `Send a message directly to ${profile.name} through the foundation website.`;
+    }
+    if (contactStatus) {
+      contactStatus.textContent = `Messages are sent directly through the website to ${profile.email}.`;
+    }
+  } else if (topicField) {
+    const topicKey = new URLSearchParams(window.location.search).get("topic") || "";
+
+    if (Object.prototype.hasOwnProperty.call(contactRecipients, topicKey)) {
+      topicField.value = topicKey;
+    }
+  }
 
   contactForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -262,9 +305,10 @@ if (contactForm) {
     const name = String(formData.get("name") || "").trim();
     const email = String(formData.get("email") || "").trim();
     const topic = String(formData.get("topic") || "").trim();
+    const recipient = String(formData.get("recipient") || "").trim();
     const message = String(formData.get("message") || "").trim();
-    const emailTo = contactRecipients[topic] || contactRecipients.administration;
-    const topicLabel = topic ? topic.replace(/-/g, " ") : "general";
+    const profile = officerProfiles[recipient];
+    const emailTo = profile?.email || contactRecipients[topic] || contactRecipients.administration;
     if (contactStatus) {
       contactStatus.textContent = "Sending your message...";
     }
@@ -274,7 +318,7 @@ if (contactForm) {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ name, email, topic, message })
+      body: JSON.stringify({ name, email, topic, recipient, message })
     })
       .then((response) => {
         if (!response.ok) {
@@ -286,6 +330,11 @@ if (contactForm) {
       })
       .then(() => {
         contactForm.reset();
+        if (isOfficerContactForm && recipientDisplay && recipientField) {
+          const selectedProfile = officerProfiles[recipient] || officerProfiles.founder;
+          recipientField.value = recipient || "founder";
+          recipientDisplay.value = `${selectedProfile.name} (${selectedProfile.email})`;
+        }
         if (contactStatus) {
           contactStatus.textContent = `Thank you. Your message was sent to ${emailTo}.`;
         }
