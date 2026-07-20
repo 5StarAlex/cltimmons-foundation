@@ -283,7 +283,7 @@ if (contactForm) {
       contactHeroTitle.textContent = `Contact ${profile.name}.`;
     }
     if (contactHeroText) {
-      contactHeroText.textContent = `Connect with ${profile.name}.`;
+      contactHeroText.hidden = true;
     }
     if (contactStatus) {
       contactStatus.textContent = `Messages are sent directly through the website to ${profile.email}.`;
