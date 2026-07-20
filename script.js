@@ -283,7 +283,7 @@ if (contactForm) {
       contactHeroTitle.textContent = `Contact ${profile.name}.`;
     }
     if (contactHeroText) {
-      contactHeroText.textContent = `Send a message directly to ${profile.name} through the foundation website.`;
+      contactHeroText.textContent = `Connect with ${profile.name}.`;
     }
     if (contactStatus) {
       contactStatus.textContent = `Messages are sent directly through the website to ${profile.email}.`;
