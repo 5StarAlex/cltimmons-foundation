@@ -925,8 +925,8 @@ a {
   margin: 0 0 8px;
   color: var(--burgundy-soft);
   font-family: var(--serif);
-  font-size: 24px;
-  line-height: 1.1;
+  font-size: clamp(20px, 2vw, 26px);
+  line-height: 1.15;
   font-weight: 700;
 }
 
@@ -934,8 +934,8 @@ a {
   margin: 0 0 18px;
   color: var(--ink);
   font-family: var(--serif);
-  font-size: clamp(44px, 4vw, 64px);
-  line-height: 0.98;
+  font-size: clamp(34px, 3.6vw, 58px);
+  line-height: 1;
   font-weight: 600;
 }
 
@@ -1071,16 +1071,19 @@ body.modal-open {
 
 .officer-tabs {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
   margin-top: 48px;
   padding-top: 26px;
   border-top: 1px solid rgba(184, 133, 54, 0.32);
 }
 
 .officer-tab {
-  min-height: 58px;
-  padding: 10px 12px;
+  display: grid;
+  align-content: center;
+  gap: 5px;
+  min-height: 88px;
+  padding: 14px 16px;
   color: var(--burgundy);
   background: rgba(255, 250, 242, 0.74);
   border: 1px solid rgba(184, 133, 54, 0.34);
@@ -1090,8 +1093,29 @@ body.modal-open {
   font-size: 16px;
   font-weight: 700;
   line-height: 1.1;
-  letter-spacing: 0.03em;
   transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.officer-tab span,
+.officer-tab small {
+  display: block;
+  min-width: 0;
+}
+
+.officer-tab span {
+  color: currentColor;
+  font-size: 17px;
+  line-height: 1.05;
+}
+
+.officer-tab small {
+  color: rgba(107, 16, 11, 0.74);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .officer-tab:hover,
@@ -1099,6 +1123,11 @@ body.modal-open {
   color: #fffaf4;
   background: var(--burgundy);
   border-color: var(--burgundy);
+}
+
+.officer-tab:hover small,
+.officer-tab.active small {
+  color: rgba(255, 250, 244, 0.82);
 }
 
 .contact-form {
@@ -1342,7 +1371,8 @@ body.modal-open {
   }
 
   .officer-copy h3 {
-    font-size: 42px;
+    font-size: clamp(31px, 10vw, 42px);
+    overflow-wrap: break-word;
   }
 
   .officer-copy p:not(.eyebrow):not(.officer-role) {

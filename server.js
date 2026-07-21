@@ -40,13 +40,17 @@ const recipients = {
 const officerRecipients = {
   founder: { email: "tlance@cltimmons.org", name: "Tatyana Lance" },
   "strategic-marketing": { email: "ellance@cltimmons.org", name: "Elizabeth Lance" },
-  "cfo-eric": { email: "elance@cltimmons.org", name: "Eric J. Lance" },
+  secretary: { email: "elance@cltimmons.org", name: "Eric Lance" },
   "community-affairs": { email: "omerchant@cltimmons.org", name: "Oscar Merchant III" },
-  "cfo-keasia": { email: "klance@cltimmons.org", name: "Ke'Asia Lance" },
+  "cfo-keasia": { email: "klance@cltimmons.org", name: "Keasia Lance" },
   technology: { email: "alance@cltimmons.org", name: "Alexander Lance" },
   "education-affairs": { email: "mwilliamson@cltimmons.org", name: "Michiko Williamson" },
-  "chief-advisor": { email: "pbrown@cltimmons.org", name: "Parish Brown" },
-  "chief-advisor-brenda": { email: "bperkins@cltimmons.org", name: "Brenda Perkins" }
+  parish: { email: "pbrown@cltimmons.org", name: "Parish Brown" },
+  brenda: { email: "bperkins@cltimmons.org", name: "Brenda Perkins" },
+  health: { email: "admin@cltimmons.org", name: "Shearia Burch-McElveen" },
+  education: { email: "admin@cltimmons.org", name: "Dr. Bridget Fleming" },
+  wellness: { email: "admin@cltimmons.org", name: "Dr. Kira O'Neal" },
+  governance: { email: "admin@cltimmons.org", name: "The Honorable Adonikam J. Hudson" }
 };
 
 const types = {
