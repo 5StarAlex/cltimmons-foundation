@@ -232,6 +232,33 @@ a {
   background: #dca546;
 }
 
+.text-link {
+  color: var(--burgundy-soft);
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.hero-actions .gold-button,
+.hero-actions .outline-button,
+.cta-band .outline-button {
+  margin-top: 0;
+}
+
+.page-hero .outline-button,
+.cta-band .outline-button {
+  color: #fffaf4;
+  border-color: rgba(255, 250, 244, 0.58);
+}
+
 .hero-image {
   position: relative;
   min-width: 0;
@@ -1135,6 +1162,151 @@ body.modal-open {
   border-color: rgba(107, 16, 11, 0.24);
 }
 
+.compact-list {
+  gap: 14px;
+}
+
+.partner-card-grid,
+.metric-grid,
+.logo-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.partner-card-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.partner-card {
+  min-height: 330px;
+  padding: 30px;
+  background: #fffaf2;
+  border: 1px solid rgba(184, 133, 54, 0.34);
+  border-radius: 8px;
+  box-shadow: 0 14px 34px rgba(67, 24, 12, 0.1);
+}
+
+.partner-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 20px;
+  color: #fffaf4;
+  background: var(--burgundy);
+  border-radius: 50%;
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.partner-card h3,
+.faq-list h3,
+.spotlight-panel h3 {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 28px;
+  line-height: 1.05;
+}
+
+.partner-card p,
+.faq-list p,
+.spotlight-panel p {
+  margin: 0;
+  color: #3e2b26;
+}
+
+.metric-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.metric {
+  min-height: 150px;
+  padding: 26px 20px;
+  text-align: center;
+  background: #fffaf2;
+  border: 1px solid rgba(184, 133, 54, 0.34);
+  border-radius: 8px;
+}
+
+.metric strong {
+  display: block;
+  color: var(--burgundy);
+  font-family: var(--serif);
+  font-size: clamp(42px, 4vw, 62px);
+  line-height: 0.95;
+}
+
+.metric span {
+  display: block;
+  margin-top: 10px;
+  color: #5a413b;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.logo-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 24px;
+}
+
+.logo-grid div {
+  min-height: 104px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  color: var(--burgundy);
+  background: #fffaf2;
+  border: 1px solid rgba(184, 133, 54, 0.34);
+  border-radius: 8px;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.spotlight {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
+  gap: 36px;
+  align-items: center;
+}
+
+.spotlight-panel {
+  padding: 30px;
+  background: #fffaf2;
+  border: 1px solid rgba(184, 133, 54, 0.34);
+  border-radius: 8px;
+  box-shadow: 0 14px 34px rgba(67, 24, 12, 0.1);
+}
+
+.faq-list {
+  display: grid;
+  gap: 14px;
+}
+
+.faq-list article {
+  padding: 24px;
+  background: #fffaf2;
+  border: 1px solid rgba(184, 133, 54, 0.3);
+  border-radius: 8px;
+}
+
+.partner-wall {
+  display: grid;
+  gap: 42px;
+}
+
+.partner-wall h2 {
+  margin-bottom: 8px;
+  font-size: clamp(36px, 4vw, 52px);
+}
+
 .donation-section {
   background:
     linear-gradient(135deg, rgba(255, 250, 242, 0.92), rgba(247, 237, 220, 0.84)),
@@ -1355,8 +1527,15 @@ body.modal-open {
   .application-note-grid,
   .officer-feature,
   .donation-layout,
+  .partner-card-grid,
+  .spotlight,
   .content-list {
     grid-template-columns: 1fr;
+  }
+
+  .metric-grid,
+  .logo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .form-grid.two,
@@ -1478,6 +1657,27 @@ body.modal-open {
 
   .paypal-panel {
     padding: 26px 20px;
+  }
+
+  .metric-grid,
+  .logo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .partner-card {
+    min-height: 0;
+    padding: 24px;
+  }
+
+  .hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hero-actions .gold-button,
+  .hero-actions .outline-button,
+  .cta-band .outline-button {
+    width: 100%;
   }
 
   .page-hero-inner,

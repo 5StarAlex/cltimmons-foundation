@@ -58,7 +58,14 @@ document.querySelectorAll(".site-nav a").forEach((link) => {
   const linkPath = new URL(link.href, window.location.href).pathname.replace(/\/$/, "");
   const currentPath = window.location.pathname.replace(/\/$/, "") || "/index.html";
   const normalizedCurrent = currentPath === "" || currentPath === "/" ? "/index.html" : currentPath;
-  if (linkPath.endsWith(normalizedCurrent.split("/").pop())) {
+  const currentPage = normalizedCurrent.split("/").pop();
+  const navPage = linkPath.split("/").pop();
+  const navGroups = {
+    "community-partners.html": ["community-partners.html", "become-a-partner.html", "our-partners.html"],
+    "community-initiatives.html": ["community-initiatives.html", "impact.html", "news.html", "get-involved.html"]
+  };
+  const isGroupedActive = navGroups[navPage]?.includes(currentPage);
+  if (navPage === currentPage || isGroupedActive) {
     link.classList.add("active");
   }
 });
