@@ -1130,6 +1130,11 @@ body.modal-open {
   color: rgba(255, 250, 244, 0.82);
 }
 
+.legacy-tab {
+  background: linear-gradient(135deg, rgba(255, 250, 242, 0.94), rgba(239, 218, 180, 0.42));
+  border-color: rgba(107, 16, 11, 0.24);
+}
+
 .donation-section {
   background:
     linear-gradient(135deg, rgba(255, 250, 242, 0.92), rgba(247, 237, 220, 0.84)),

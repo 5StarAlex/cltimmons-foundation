@@ -50,7 +50,8 @@ const officerRecipients = {
   health: { email: "admin@cltimmons.org", name: "Shearia Burch-McElveen" },
   education: { email: "admin@cltimmons.org", name: "Dr. Bridget Fleming" },
   wellness: { email: "admin@cltimmons.org", name: "Dr. Kira O'Neal" },
-  governance: { email: "admin@cltimmons.org", name: "The Honorable Adonikam J. Hudson" }
+  governance: { email: "admin@cltimmons.org", name: "The Honorable Adonikam J. Hudson" },
+  "legacy-members": { email: "admin@cltimmons.org", name: "Legacy Members" }
 };
 
 const types = {
