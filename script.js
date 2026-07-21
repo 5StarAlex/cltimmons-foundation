@@ -144,19 +144,23 @@ const officerProfiles = {
   },
   brenda: {
     role: "Director-at-Large",
-    name: "Brenda Perkins, CCHW",
-    noPhoto: true,
+    name: "Brenda Dozier Perkins, CCHW",
+    photo: "assets/brenda.png",
+    alt: "Brenda Perkins",
     email: "bperkins@cltimmons.org",
     contactUrl: "officer-contact.html?person=brenda",
-    bio: "Biography coming soon."
+    bio: "Brenda Dozier Perkins is a Georgetown, South Carolina community leader, healthcare professional, and advocate with more than 28 years of healthcare experience. As Founder and CEO of Browns Ferry Community Outreach, she works to strengthen rural communities through wellness, service, and engagement.",
+    fullBio: "Brenda Dozier Perkins is a resident of Georgetown, South Carolina, the daughter of Mary L. Dozier and the late Carl Dozier Sr. She is married to Mr. Andreau Perkins and is the mother of two sons, Quinton Scott and Arlington Scott. She is also a mother-in-law to Jasmins Scott and the proud grandmother of four precious grandchildren.\n\nBrenda has dedicated her life to becoming a community leader, healthcare professional, and community advocate by uplifting and empowering her community. A proud 1984 graduate of Choppee High School, she continued her education at Horry-Georgetown Technical College, where she earned a certification in Cardiac Care. She later expanded her commitment to community wellness by receiving her certification as a Community Health Worker from the University of South Carolina Upstate.\n\nWith more than 28 years of experience in healthcare, Brenda has devoted her career to improving the health and well-being of others. Her passion for service led her to establish Browns Ferry Community Outreach, a 501(c)(3) nonprofit organization founded in April 2017. As CEO and Founder, she works tirelessly to address the needs of the Browns Ferry community, a rural area of Georgetown County and surrounding areas, through outreach, support programs, and community engagement.\n\nHer leadership extends into numerous civic and community roles. She currently serves on the Board of Trustees for the Browns Ferry Community Water Company, and she is a member of The Center for Community Health Alliance Governance Council and Community Voice Advisory Board. In addition, she supports youth and education as the Regional Magnet Community Outreach Member for Browns Ferry Elementary School for Creative and Performing Arts.\n\nBrenda's commitment to service has earned her numerous awards and accolades recognizing the impact she has made within her community. Despite these honors, she remains grounded in faith and gratitude.\n\nA devoted member of St. Paul AME Church in the Browns Ferry Community of Georgetown, South Carolina, Brenda actively serves in several ministries. She is the Vice President of the Adult Choir, Secretary of the Trustee Board, and an active member of the Usher Board.\n\nAbove all, Brenda gives thanks to God for the opportunities she has been given to serve and for the many people who have supported and inspired her along the way. Her personal motto is: \"Love is what love does.\""
   },
   health: {
     role: "Director of Health & Clinical Partnerships",
     name: "Shearia Burch-McElveen",
-    noPhoto: true,
+    photo: "assets/Shearia.jpg",
+    alt: "Shearia Burch-McElveen",
     email: "admin@cltimmons.org",
     contactUrl: "officer-contact.html?person=health",
-    bio: "Biography coming soon."
+    bio: "Shearia Burch-McElveen serves as Director of Health & Clinical Partnerships. A Florence, South Carolina resident, she brings a strong background in health science, nursing, women's health, and service-centered care.",
+    fullBio: "Shearia Burch-McElveen serves as Director of Health & Clinical Partnerships for The Cathy Lance Timmons Foundation. She is married with children and currently resides in Florence, South Carolina.\n\nShearia is a graduate of Aynor High School. She earned her Bachelor of Science in Health Science from Herzing University and her Master of Nursing degree from Coker University.\n\nShe is currently employed with McLeod Health, where she has worked in Women's Health for the past 11 years. Service has been a lifelong passion for Shearia, and she brings that commitment to her work supporting health-centered partnerships, care, and community well-being."
   },
   education: {
     role: "Director of Educational Opportunity",
@@ -177,10 +181,12 @@ const officerProfiles = {
   governance: {
     role: "Director of Legal & Governance",
     name: "The Honorable Adonikam J. Hudson",
-    noPhoto: true,
+    photo: "assets/adonikam.JPG",
+    alt: "The Honorable Adonikam J. Hudson",
     email: "admin@cltimmons.org",
     contactUrl: "officer-contact.html?person=governance",
-    bio: "Biography coming soon."
+    bio: "The Honorable Adonikam J. Hudson serves as Director of Legal & Governance. He is proprietor of The Hudson Law Firm LLC in Timmonsville and a Florence Magistrate Judge with experience across legal practice, education, and public service.",
+    fullBio: "The Honorable Adonikam J. Hudson is the proprietor of The Hudson Law Firm LLC, located in Timmonsville, South Carolina. His practice includes criminal defense, family law, personal injury, and probate law. He began his legal career as a legal assistant at Nelson Mullins, where he conducted research and compiled data for significant legal matters.\n\nIn addition to his legal work, Mr. Hudson has a strong background in public service through AmeriCorps and Teach For America. During that time, he taught middle school mathematics and focused on empowering students from low socioeconomic backgrounds in Florence School District Three and Kershaw County School District. He later expanded his commitment to educational service by successfully running for and being elected to the Florence School District Four Board.\n\nMr. Hudson has also assisted juvenile defendants as co-counsel through the University of South Carolina Law Juvenile Justice Clinic. He gained additional experience as a summer associate at the South Carolina Commission on Indigent Defense, where he supported counsel in capital trials and helped construct legal defenses for clients. He also held a position at the Fifth Circuit Solicitor's Office under the mentorship of The Honorable Byron Gipson.\n\nPresently, Mr. Hudson serves as a Magistrate Judge in Florence, South Carolina, contributing to the community of his hometown, Timmonsville."
   }
 };
 

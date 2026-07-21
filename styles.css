@@ -1130,6 +1130,91 @@ body.modal-open {
   color: rgba(255, 250, 244, 0.82);
 }
 
+.donation-section {
+  background:
+    linear-gradient(135deg, rgba(255, 250, 242, 0.92), rgba(247, 237, 220, 0.84)),
+    var(--paper);
+}
+
+.donation-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.72fr);
+  gap: 42px;
+  align-items: center;
+}
+
+.donation-copy h2 {
+  max-width: 760px;
+}
+
+.donation-copy .lead {
+  max-width: 700px;
+}
+
+.donation-priorities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.donation-priorities span {
+  padding: 9px 13px;
+  color: var(--burgundy);
+  background: #fffaf2;
+  border: 1px solid rgba(184, 133, 54, 0.34);
+  border-radius: 4px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.paypal-panel {
+  padding: clamp(26px, 4vw, 40px);
+  text-align: center;
+  background: #fffaf2;
+  border: 1px solid rgba(184, 133, 54, 0.38);
+  border-radius: 8px;
+  box-shadow: 0 18px 44px rgba(67, 24, 12, 0.12);
+}
+
+.paypal-panel-title {
+  margin: 0 0 20px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.paypal-button-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.paypal-button-wrap form {
+  width: min(100%, 340px);
+}
+
+.paypal-button-wrap input[type="submit"] {
+  width: 100%;
+}
+
+.paypal-button-wrap img {
+  max-width: min(100%, 260px);
+  height: auto;
+}
+
+.paypal-note {
+  max-width: 300px;
+  margin: 18px auto 0;
+  color: #5a413b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
 .contact-form {
   display: grid;
   gap: 16px;
@@ -1264,6 +1349,7 @@ body.modal-open {
   .impact-card-row,
   .application-note-grid,
   .officer-feature,
+  .donation-layout,
   .content-list {
     grid-template-columns: 1fr;
   }
@@ -1378,6 +1464,15 @@ body.modal-open {
   .officer-copy p:not(.eyebrow):not(.officer-role) {
     font-size: 17px;
     overflow-wrap: break-word;
+  }
+
+  .donation-priorities {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .paypal-panel {
+    padding: 26px 20px;
   }
 
   .page-hero-inner,
