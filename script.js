@@ -61,6 +61,7 @@ document.querySelectorAll(".site-nav a").forEach((link) => {
   const currentPage = normalizedCurrent.split("/").pop();
   const navPage = linkPath.split("/").pop();
   const navGroups = {
+    "cathys-closet.html": ["cathys-closet.html", "cathys-closet-giveaway.html"],
     "community-partners.html": ["community-partners.html", "become-a-partner.html", "our-partners.html"],
     "community-initiatives.html": ["community-initiatives.html", "impact.html", "news.html", "get-involved.html"]
   };
@@ -69,6 +70,43 @@ document.querySelectorAll(".site-nav a").forEach((link) => {
     link.classList.add("active");
   }
 });
+
+const posterModal = document.querySelector("[data-poster-modal]");
+const posterModalClose = document.querySelector("[data-poster-modal-close]");
+
+function openPosterModal() {
+  if (!posterModal) return;
+
+  posterModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+  window.requestAnimationFrame(() => {
+    posterModal.classList.add("is-visible");
+  });
+}
+
+function closePosterModal() {
+  if (!posterModal) return;
+
+  posterModal.classList.remove("is-visible");
+  posterModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+}
+
+if (posterModal) {
+  window.addEventListener("load", () => {
+    window.setTimeout(openPosterModal, 260);
+  });
+
+  posterModal.addEventListener("click", (event) => {
+    if (event.target === posterModal) {
+      closePosterModal();
+    }
+  });
+}
+
+if (posterModalClose) {
+  posterModalClose.addEventListener("click", closePosterModal);
+}
 
 const officerProfiles = {
   founder: {
@@ -297,6 +335,10 @@ if (bioModal) {
 }
 
 document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && posterModal && posterModal.getAttribute("aria-hidden") === "false") {
+    closePosterModal();
+  }
+
   if (event.key === "Escape" && bioModal && bioModal.getAttribute("aria-hidden") === "false") {
     closeBioModal();
   }
