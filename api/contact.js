@@ -7,7 +7,7 @@ const recipients = {
 };
 
 const officerRecipients = {
-  founder: { email: "tlance@cltimmons.org", name: "Tatyana Lance" },
+  founder: { email: "tlance@cltimmons.org", name: "Tatyana Lance, MSN" },
   "strategic-marketing": { email: "ellance@cltimmons.org", name: "Elizabeth Lance" },
   secretary: { email: "elance@cltimmons.org", name: "Eric Lance" },
   "community-affairs": { email: "omerchant@cltimmons.org", name: "Oscar Merchant III" },
@@ -16,9 +16,7 @@ const officerRecipients = {
   "education-affairs": { email: "mwilliamson@cltimmons.org", name: "Michiko Williamson" },
   parish: { email: "pbrown@cltimmons.org", name: "Parish Brown" },
   brenda: { email: "bperkins@cltimmons.org", name: "Brenda Perkins" },
-  health: { email: "admin@cltimmons.org", name: "Shearia Burch-McElveen" },
-  education: { email: "admin@cltimmons.org", name: "Dr. Bridget Fleming" },
-  wellness: { email: "admin@cltimmons.org", name: "Dr. Kira O'Neal" },
+  health: { email: "admin@cltimmons.org", name: "Shearia Burch-McElveen, MSN" },
   governance: { email: "admin@cltimmons.org", name: "The Honorable Adonikam J. Hudson" },
   "legacy-members": { email: "admin@cltimmons.org", name: "Legacy Members" }
 };

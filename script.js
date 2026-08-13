@@ -111,7 +111,7 @@ if (posterModalClose) {
 const officerProfiles = {
   founder: {
     role: "Board Chair & President",
-    name: "Tatyana Lance, MBA, MSW, LMSW, LCSW-A",
+    name: "Tatyana Lance, MBA, MSN, MSW, LMSW, LCSW-A",
     photo: "assets/Taty.jpeg",
     alt: "Tatyana Lance",
     email: "tlance@cltimmons.org",
@@ -199,29 +199,13 @@ const officerProfiles = {
   },
   health: {
     role: "Director of Health & Clinical Partnerships",
-    name: "Shearia Burch-McElveen",
+    name: "Shearia Burch-McElveen, MSN",
     photo: "assets/Shearia.jpg",
     alt: "Shearia Burch-McElveen",
     email: "admin@cltimmons.org",
     contactUrl: "officer-contact.html?person=health",
     bio: "Shearia Burch-McElveen serves as Director of Health & Clinical Partnerships. A Florence, South Carolina resident, she brings a strong background in health science, nursing, women's health, and service-centered care.",
-    fullBio: "Shearia Burch-McElveen serves as Director of Health & Clinical Partnerships for The Cathy Lance Timmons Foundation. She is married with children and currently resides in Florence, South Carolina.\n\nShearia is a graduate of Aynor High School. She earned her Bachelor of Science in Health Science from Herzing University and her Master of Nursing degree from Coker University.\n\nShe is currently employed with McLeod Health, where she has worked in Women's Health for the past 11 years. Service has been a lifelong passion for Shearia, and she brings that commitment to her work supporting health-centered partnerships, care, and community well-being."
-  },
-  education: {
-    role: "Director of Educational Opportunity",
-    name: "Dr. Bridget Fleming",
-    noPhoto: true,
-    email: "admin@cltimmons.org",
-    contactUrl: "officer-contact.html?person=education",
-    bio: "Biography coming soon."
-  },
-  wellness: {
-    role: "Director of Behavioral Health & Wellness",
-    name: "Dr. Kira O'Neal",
-    noPhoto: true,
-    email: "admin@cltimmons.org",
-    contactUrl: "officer-contact.html?person=wellness",
-    bio: "Biography coming soon."
+    fullBio: "Shearia Burch-McElveen serves as Director of Health & Clinical Partnerships for The Cathy Lance Timmons Foundation. She is married with children and currently resides in Florence, South Carolina.\n\nShearia is a graduate of Aynor High School. She earned her Bachelor of Science in Health Science from Herzing University and her Master of Science in Nursing (MSN) from Coker University.\n\nShe is currently employed with McLeod Health, where she has worked in Women's Health for the past 11 years. Service has been a lifelong passion for Shearia, and she brings that commitment to her work supporting health-centered partnerships, care, and community well-being."
   },
   governance: {
     role: "Director of Legal & Governance",
