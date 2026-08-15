@@ -28,17 +28,18 @@ loadLocalEnv();
 
 const port = Number(process.env.PORT || 8000);
 const scholarshipRecipient = "scholarships@cltimmons.org";
+const sponsorshipRecipient = "partnerships@cltimmons.org";
 const defaultFromEmail = "The Cathy Lance Timmons Foundation <noreply@cltimmons.org>";
 const resendTimeoutMs = 15000;
 const recipients = {
   administration: "admin@cltimmons.org",
-  partnerships: "partnerships@cltimmons.org",
+  partnerships: sponsorshipRecipient,
   scholarships: scholarshipRecipient,
   socials: "socials@cltimmons.org",
   technology: "technology@cltimmons.org"
 };
 const officerRecipients = {
-  founder: { email: "tlance@cltimmons.org", name: "Tatyana Lance" },
+  founder: { email: "tlance@cltimmons.org", name: "Tatyana Lance, MSN" },
   "strategic-marketing": { email: "ellance@cltimmons.org", name: "Elizabeth Lance" },
   secretary: { email: "elance@cltimmons.org", name: "Eric Lance" },
   "community-affairs": { email: "omerchant@cltimmons.org", name: "Oscar Merchant III" },
@@ -47,9 +48,7 @@ const officerRecipients = {
   "education-affairs": { email: "mwilliamson@cltimmons.org", name: "Michiko Williamson" },
   parish: { email: "pbrown@cltimmons.org", name: "Parish Brown" },
   brenda: { email: "bperkins@cltimmons.org", name: "Brenda Perkins" },
-  health: { email: "admin@cltimmons.org", name: "Shearia Burch-McElveen" },
-  education: { email: "admin@cltimmons.org", name: "Dr. Bridget Fleming" },
-  wellness: { email: "admin@cltimmons.org", name: "Dr. Kira O'Neal" },
+  health: { email: "admin@cltimmons.org", name: "Shearia Burch-McElveen, MSN" },
   governance: { email: "admin@cltimmons.org", name: "The Honorable Adonikam J. Hudson" },
   "legacy-members": { email: "admin@cltimmons.org", name: "Legacy Members" }
 };
@@ -61,6 +60,7 @@ const types = {
   ".png": "image/png",
   ".jpg": "image/jpeg",
   ".jpeg": "image/jpeg",
+  ".pdf": "application/pdf",
   ".svg": "image/svg+xml",
   ".webp": "image/webp"
 };
@@ -255,6 +255,69 @@ function validateScholarshipApplication(application) {
   return { valid: true };
 }
 
+function formatSponsorshipSubmission(submission) {
+  const supportAreas = [
+    submission.supportScholarships ? "Scholarships and educational support" : "",
+    submission.supportCathysCloset ? "Cathy's Closet and resource drives" : "",
+    submission.supportCommunityOutreach ? "Community outreach and special events" : "",
+    submission.supportWellBeing ? "Well-being and mental health initiatives" : ""
+  ].filter(Boolean);
+
+  return [
+    "Sponsorship Submission",
+    "",
+    `Submitted: ${submission.submittedAt}`,
+    "",
+    "Organization",
+    `Organization or sponsor name: ${submission.organizationName}`,
+    `Recognition name: ${submission.recognitionName || "Not provided"}`,
+    `Contact name: ${submission.contactName}`,
+    `Title or role: ${submission.contactTitle || "Not provided"}`,
+    `Email: ${submission.email}`,
+    `Phone: ${submission.phone}`,
+    `Website: ${submission.website || "Not provided"}`,
+    `Address: ${[submission.address, submission.city, submission.state, submission.zip].filter(Boolean).join(", ") || "Not provided"}`,
+    `Preferred follow-up: ${submission.preferredFollowUp}`,
+    "",
+    "Sponsorship Details",
+    `Sponsorship level: ${submission.sponsorshipLevel}`,
+    `Sponsorship amount: $${submission.sponsorshipAmount}`,
+    `Payment method: ${submission.paymentMethod}`,
+    `Logo or recognition material status: ${submission.logoStatus || "Not provided"}`,
+    `Support areas: ${supportAreas.join("; ") || "Not selected"}`,
+    "",
+    "Notes",
+    submission.sponsorshipNotes,
+    "",
+    "Certification",
+    `Packet acknowledgement: ${submission.packetAcknowledgement ? "Yes" : "No"}`,
+    `Communication consent: ${submission.communicationConsent ? "Yes" : "No"}`
+  ].join("\n");
+}
+
+function validateSponsorshipSubmission(submission) {
+  const requiredFields = [
+    "organizationName",
+    "contactName",
+    "email",
+    "phone",
+    "preferredFollowUp",
+    "sponsorshipLevel",
+    "sponsorshipAmount",
+    "paymentMethod",
+    "sponsorshipNotes",
+    "packetAcknowledgement",
+    "communicationConsent"
+  ];
+  const missingFields = requiredFields.filter((field) => !submission[field]);
+
+  if (missingFields.length > 0) {
+    return { valid: false, status: 400, payload: { error: "Required fields are missing.", missingFields } };
+  }
+
+  return { valid: true };
+}
+
 async function handleContact(req, res) {
   const body = normalizePayload(await readRequestBody(req));
   const officerRecipient = officerRecipients[body.recipient];
@@ -309,6 +372,31 @@ async function handleScholarship(req, res) {
   sendJson(res, 200, { ok: true, recipient: scholarshipRecipient });
 }
 
+async function handleSponsorship(req, res) {
+  const submission = normalizePayload(await readRequestBody(req));
+  submission.submittedAt = new Date().toISOString();
+
+  const validation = validateSponsorshipSubmission(submission);
+  if (!validation.valid) {
+    sendJson(res, validation.status, validation.payload);
+    return;
+  }
+
+  const dataDir = path.join(root, "data");
+  const submissionPath = path.join(dataDir, "sponsorship-submissions.jsonl");
+  fs.mkdirSync(dataDir, { recursive: true });
+  fs.appendFileSync(submissionPath, `${JSON.stringify(submission)}\n`, "utf8");
+
+  await sendEmail({
+    to: sponsorshipRecipient,
+    replyTo: submission.email,
+    subject: `Sponsorship submission from ${submission.organizationName}`,
+    text: formatSponsorshipSubmission(submission)
+  });
+
+  sendJson(res, 200, { ok: true, recipient: sponsorshipRecipient });
+}
+
 http
   .createServer(async (req, res) => {
     const urlPath = decodeURIComponent(req.url.split("?")[0]);
@@ -327,6 +415,15 @@ http
         await handleScholarship(req, res);
       } catch (error) {
         sendJson(res, 502, { error: error.message || "Unable to submit application." });
+      }
+      return;
+    }
+
+    if (req.method === "POST" && urlPath === "/api/sponsorship") {
+      try {
+        await handleSponsorship(req, res);
+      } catch (error) {
+        sendJson(res, 502, { error: error.message || "Unable to submit sponsorship information." });
       }
       return;
     }

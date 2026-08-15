@@ -1451,6 +1451,49 @@ body.modal-open {
   color: #3e2b26;
 }
 
+.sponsorship-panel {
+  padding: 30px;
+  background: #fffaf2;
+  border: 1px solid rgba(184, 133, 54, 0.34);
+  border-radius: 8px;
+  box-shadow: 0 14px 34px rgba(67, 24, 12, 0.1);
+}
+
+.sponsorship-panel > h3 {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 30px;
+  line-height: 1.05;
+}
+
+.sponsorship-panel > p {
+  margin: 0 0 18px;
+  color: #3e2b26;
+}
+
+.submission-steps {
+  display: grid;
+  gap: 14px;
+}
+
+.submission-steps div {
+  display: grid;
+  gap: 4px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(184, 133, 54, 0.28);
+}
+
+.submission-steps strong {
+  color: var(--burgundy);
+  font-family: var(--serif);
+  font-size: 22px;
+}
+
+.submission-steps span {
+  color: #3e2b26;
+}
+
 .metric-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }

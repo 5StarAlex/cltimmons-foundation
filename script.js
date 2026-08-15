@@ -430,6 +430,9 @@ if (contactForm) {
 const scholarshipForm = document.querySelector("[data-scholarship-form]");
 const scholarshipDraftKey = "cltimmons-scholarship-application-draft";
 const scholarshipEmail = "scholarships@cltimmons.org";
+const sponsorshipForm = document.querySelector("[data-sponsorship-form]");
+const sponsorshipDraftKey = "cltimmons-sponsorship-submission-draft";
+const sponsorshipEmail = "partnerships@cltimmons.org";
 
 function getFormPayload(form) {
   const payload = {};
@@ -521,6 +524,85 @@ if (scholarshipForm) {
       .catch((error) => {
         if (scholarshipStatus) {
           scholarshipStatus.textContent = `Application was not sent. ${error.message}`;
+        }
+      });
+  });
+}
+
+if (sponsorshipForm) {
+  const sponsorshipStatus = sponsorshipForm.querySelector("[data-sponsorship-status]");
+  const clearDraftButton = sponsorshipForm.querySelector("[data-clear-sponsorship-draft]");
+  const savedDraft = window.localStorage.getItem(sponsorshipDraftKey);
+
+  if (savedDraft) {
+    try {
+      const draft = JSON.parse(savedDraft);
+      Object.entries(draft).forEach(([name, value]) => {
+        const field = sponsorshipForm.elements[name];
+        if (!field) return;
+        if (field.type === "checkbox") {
+          field.checked = Boolean(value);
+        } else {
+          field.value = value;
+        }
+      });
+    } catch {
+      window.localStorage.removeItem(sponsorshipDraftKey);
+    }
+  }
+
+  sponsorshipForm.addEventListener("input", () => {
+    window.localStorage.setItem(sponsorshipDraftKey, JSON.stringify(getFormPayload(sponsorshipForm)));
+    if (sponsorshipStatus) {
+      sponsorshipStatus.textContent = "Sponsorship draft saved on this device.";
+    }
+  });
+
+  if (clearDraftButton) {
+    clearDraftButton.addEventListener("click", () => {
+      window.localStorage.removeItem(sponsorshipDraftKey);
+      sponsorshipForm.reset();
+      if (sponsorshipStatus) {
+        sponsorshipStatus.textContent = "Sponsorship draft cleared.";
+      }
+    });
+  }
+
+  sponsorshipForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!sponsorshipForm.reportValidity()) return;
+
+    const payload = getFormPayload(sponsorshipForm);
+    if (sponsorshipStatus) {
+      sponsorshipStatus.textContent = "Submitting your sponsorship information...";
+    }
+
+    fetch("/api/sponsorship", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    })
+      .then((response) => {
+        if (!response.ok) {
+          return response.json().catch(() => ({})).then((data) => {
+            throw new Error(data.details || data.error || "Sponsorship API unavailable");
+          });
+        }
+        return response.json();
+      })
+      .then(() => {
+        window.localStorage.removeItem(sponsorshipDraftKey);
+        sponsorshipForm.reset();
+        if (sponsorshipStatus) {
+          sponsorshipStatus.textContent = `Thank you. Your sponsorship information was sent to ${sponsorshipEmail}.`;
+        }
+      })
+      .catch((error) => {
+        if (sponsorshipStatus) {
+          sponsorshipStatus.textContent = `Sponsorship information was not sent. ${error.message}`;
         }
       });
   });
