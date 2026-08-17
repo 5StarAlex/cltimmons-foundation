@@ -532,7 +532,29 @@ if (scholarshipForm) {
 if (sponsorshipForm) {
   const sponsorshipStatus = sponsorshipForm.querySelector("[data-sponsorship-status]");
   const clearDraftButton = sponsorshipForm.querySelector("[data-clear-sponsorship-draft]");
+  const sponsorshipLevelField = sponsorshipForm.querySelector("[data-sponsorship-level]");
+  const sponsorshipAmountField = sponsorshipForm.querySelector("[data-sponsorship-amount]");
+  const sponsorshipDescription = sponsorshipForm.querySelector("[data-sponsorship-description]");
   const savedDraft = window.localStorage.getItem(sponsorshipDraftKey);
+
+  function saveSponsorshipDraft() {
+    window.localStorage.setItem(sponsorshipDraftKey, JSON.stringify(getFormPayload(sponsorshipForm)));
+    if (sponsorshipStatus) {
+      sponsorshipStatus.textContent = "Sponsorship draft saved on this device.";
+    }
+  }
+
+  function updateSponsorshipLevelDetails({ fillAmount = false } = {}) {
+    if (!sponsorshipLevelField || !sponsorshipAmountField || !sponsorshipDescription) return;
+
+    const selectedOption = sponsorshipLevelField.selectedOptions[0];
+    const amount = selectedOption?.dataset.amount || "";
+    const description = selectedOption?.dataset.description || "Select a sponsorship level to see what it supports.";
+    if (fillAmount) {
+      sponsorshipAmountField.value = amount;
+    }
+    sponsorshipDescription.textContent = description;
+  }
 
   if (savedDraft) {
     try {
@@ -551,11 +573,18 @@ if (sponsorshipForm) {
     }
   }
 
+  updateSponsorshipLevelDetails();
+
+  if (sponsorshipLevelField) {
+    sponsorshipLevelField.addEventListener("change", () => {
+      updateSponsorshipLevelDetails({ fillAmount: true });
+      saveSponsorshipDraft();
+    });
+  }
+
   sponsorshipForm.addEventListener("input", () => {
-    window.localStorage.setItem(sponsorshipDraftKey, JSON.stringify(getFormPayload(sponsorshipForm)));
-    if (sponsorshipStatus) {
-      sponsorshipStatus.textContent = "Sponsorship draft saved on this device.";
-    }
+    updateSponsorshipLevelDetails();
+    saveSponsorshipDraft();
   });
 
   if (clearDraftButton) {

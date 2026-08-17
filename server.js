@@ -53,6 +53,16 @@ const officerRecipients = {
   "legacy-members": { email: "admin@cltimmons.org", name: "Legacy Members" }
 };
 
+const sponsorshipLevels = {
+  "Legacy Partner": "$5,000",
+  "Dignity Partner": "$2,500",
+  "Compassion Partner": "$1,000",
+  "Hope Partner": "$500",
+  "Community Friend": "$250",
+  "In-Kind Partner": "Varies",
+  "Custom Partnership": ""
+};
+
 const types = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
@@ -281,7 +291,7 @@ function formatSponsorshipSubmission(submission) {
     "",
     "Sponsorship Details",
     `Sponsorship level: ${submission.sponsorshipLevel}`,
-    `Sponsorship amount: $${submission.sponsorshipAmount}`,
+    `Sponsorship amount: ${submission.sponsorshipAmount}`,
     `Payment method: ${submission.paymentMethod}`,
     `Logo or recognition material status: ${submission.logoStatus || "Not provided"}`,
     `Support areas: ${supportAreas.join("; ") || "Not selected"}`,
@@ -313,6 +323,10 @@ function validateSponsorshipSubmission(submission) {
 
   if (missingFields.length > 0) {
     return { valid: false, status: 400, payload: { error: "Required fields are missing.", missingFields } };
+  }
+
+  if (!Object.prototype.hasOwnProperty.call(sponsorshipLevels, submission.sponsorshipLevel)) {
+    return { valid: false, status: 400, payload: { error: "The selected sponsorship level is not valid." } };
   }
 
   return { valid: true };

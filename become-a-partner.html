@@ -38,6 +38,48 @@
           </div>
         </div>
       </section>
+      <section class="section" aria-label="Sponsorship levels">
+        <div class="section-inner">
+          <p class="eyebrow">Sponsorship Levels</p>
+          <h2>Choose the partnership level that fits your commitment.</h2>
+          <div class="sponsor-level-grid">
+            <article class="sponsor-level-card"><span>$5,000</span><h3>Legacy Partner</h3><p>Our highest level of partnership, for organizations prepared to anchor a full program year. Includes naming recognition on a program element and a speaking moment in the event program.</p></article>
+            <article class="sponsor-level-card"><span>$2,500</span><h3>Dignity Partner</h3><p>Underwrites an entire Community Store pop up. Strong fit for regional employers, health systems, and financial institutions.</p></article>
+            <article class="sponsor-level-card"><span>$1,000</span><h3>Compassion Partner</h3><p>Sustains a full donation drive cycle. A natural entry point for established local businesses and civic organizations.</p></article>
+            <article class="sponsor-level-card"><span>$500</span><h3>Hope Partner</h3><p>Equips a single pop up event. Well suited to owner operated businesses, professional practices, and small firms.</p></article>
+            <article class="sponsor-level-card"><span>$250</span><h3>Community Friend</h3><p>Stocks essentials for families in need. Designed for individuals, families, small shops, and community groups.</p></article>
+            <article class="sponsor-level-card"><span>Varies</span><h3>In-Kind Partner</h3><p>Contributions of goods, services, printing, space, transportation, or volunteer hours in place of a financial gift. Welcome at any scale.</p></article>
+            <article class="sponsor-level-card"><span>Custom</span><h3>Custom Partnership</h3><p>For organizations or families that want to set a different sponsorship amount or shape a custom partnership with the foundation.</p></article>
+          </div>
+        </div>
+      </section>
+      <section class="section alt" aria-label="Sponsor recognition benefits">
+        <div class="section-inner">
+          <p class="eyebrow">Sponsor Recognition</p>
+          <h2>Benefits run for twelve months from the date sponsorship is received.</h2>
+          <div class="benefits-table-wrap">
+            <table class="benefits-table">
+              <thead>
+                <tr><th>Benefit</th><th>Legacy<br><span>$5,000</span></th><th>Dignity<br><span>$2,500</span></th><th>Compassion<br><span>$1,000</span></th><th>Hope<br><span>$500</span></th><th>Friend<br><span>$250</span></th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Listed on the foundation website sponsor page</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+                <tr><td>Recognition in foundation social media announcements</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+                <tr><td>Named in the annual community impact summary</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+                <tr><td>Written acknowledgment letter for your records</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+                <tr><td>Logo on event signage at the Community Store and Mental Health Week</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td></td></tr>
+                <tr><td>Logo on printed event and program materials</td><td>Yes</td><td>Yes</td><td>Yes</td><td></td><td></td></tr>
+                <tr><td>Framed certificate of appreciation</td><td>Yes</td><td>Yes</td><td>Yes</td><td></td><td></td></tr>
+                <tr><td>Table or booth space at foundation events</td><td>Yes</td><td>Yes</td><td></td><td></td><td></td></tr>
+                <tr><td>Dedicated sponsor feature post with your organization profile</td><td>Yes</td><td>Yes</td><td></td><td></td><td></td></tr>
+                <tr><td>Logo placement on the foundation website home page</td><td>Yes</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Named recognition on a program element</td><td>Yes</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Speaking moment in the event program</td><td>Yes</td><td></td><td></td><td></td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
       <section class="section" id="sponsorship-form">
         <div class="section-inner">
           <form class="scholarship-form" data-sponsorship-form>
@@ -82,19 +124,20 @@
               <legend>Sponsorship Details</legend>
               <div class="form-grid two">
                 <label>Sponsorship level *
-                  <select name="sponsorshipLevel" required>
+                  <select name="sponsorshipLevel" data-sponsorship-level required>
                     <option value="">Select one</option>
-                    <option value="Presenting Sponsor">Presenting Sponsor</option>
-                    <option value="Platinum Sponsor">Platinum Sponsor</option>
-                    <option value="Gold Sponsor">Gold Sponsor</option>
-                    <option value="Silver Sponsor">Silver Sponsor</option>
-                    <option value="Bronze Sponsor">Bronze Sponsor</option>
-                    <option value="Community Sponsor">Community Sponsor</option>
-                    <option value="Custom Sponsorship">Custom Sponsorship</option>
+                    <option value="Legacy Partner" data-amount="$5,000" data-description="Our highest level of partnership, for organizations prepared to anchor a full program year. Includes naming recognition on a program element and a speaking moment in the event program.">Legacy Partner - $5,000</option>
+                    <option value="Dignity Partner" data-amount="$2,500" data-description="Underwrites an entire Community Store pop up. Strong fit for regional employers, health systems, and financial institutions.">Dignity Partner - $2,500</option>
+                    <option value="Compassion Partner" data-amount="$1,000" data-description="Sustains a full donation drive cycle. A natural entry point for established local businesses and civic organizations.">Compassion Partner - $1,000</option>
+                    <option value="Hope Partner" data-amount="$500" data-description="Equips a single pop up event. Well suited to owner operated businesses, professional practices, and small firms.">Hope Partner - $500</option>
+                    <option value="Community Friend" data-amount="$250" data-description="Stocks essentials for families in need. Designed for individuals, families, small shops, and community groups.">Community Friend - $250</option>
+                    <option value="In-Kind Partner" data-amount="Varies" data-description="Contributions of goods, services, printing, space, transportation, or volunteer hours in place of a financial gift. Welcome at any scale.">In-Kind Partner - In-Kind Sponsorship Varies</option>
+                    <option value="Custom Partnership" data-amount="" data-description="Enter the sponsorship amount or custom partnership value you would like the foundation to review.">Custom Partnership</option>
                   </select>
                 </label>
-                <label>Sponsorship amount *<input type="number" name="sponsorshipAmount" min="1" step="1" required></label>
+                <label>Sponsorship amount *<input type="text" name="sponsorshipAmount" data-sponsorship-amount placeholder="Select a level or enter a custom amount" required></label>
               </div>
+              <p class="field-help sponsor-level-description" data-sponsorship-description>Select a sponsorship level to see what it supports.</p>
               <div class="form-grid two">
                 <label>Payment method *
                   <select name="paymentMethod" required>

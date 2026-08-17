@@ -1494,6 +1494,99 @@ body.modal-open {
   color: #3e2b26;
 }
 
+.sponsor-level-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.sponsor-level-card {
+  min-height: 250px;
+  padding: 26px;
+  background: #fffaf2;
+  border: 1px solid rgba(184, 133, 54, 0.34);
+  border-radius: 8px;
+  box-shadow: 0 14px 34px rgba(67, 24, 12, 0.08);
+}
+
+.sponsor-level-card span {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: var(--burgundy);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sponsor-level-card h3 {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 30px;
+  line-height: 1.05;
+}
+
+.sponsor-level-card p {
+  margin: 0;
+  color: #3e2b26;
+}
+
+.benefits-table-wrap {
+  margin-top: 28px;
+  overflow-x: auto;
+  border: 1px solid rgba(184, 133, 54, 0.3);
+  border-radius: 8px;
+  background: #fffaf2;
+}
+
+.benefits-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+}
+
+.benefits-table th,
+.benefits-table td {
+  padding: 14px 12px;
+  border: 1px solid rgba(90, 65, 59, 0.16);
+  color: #4e3d38;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.benefits-table th:first-child,
+.benefits-table td:first-child {
+  width: 32%;
+  text-align: left;
+}
+
+.benefits-table th {
+  color: #fffaf4;
+  background: var(--burgundy);
+  font-weight: 900;
+}
+
+.benefits-table th span {
+  color: rgba(255, 250, 244, 0.86);
+  font-size: 12px;
+}
+
+.benefits-table tbody tr:nth-child(even) {
+  background: rgba(90, 65, 59, 0.06);
+}
+
+.benefits-table td:not(:first-child) {
+  color: var(--burgundy);
+  font-weight: 900;
+}
+
+.sponsor-level-description {
+  padding: 14px 16px;
+  border-left: 4px solid var(--gold);
+  background: rgba(216, 162, 74, 0.12);
+}
+
 .metric-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -1804,6 +1897,7 @@ body.modal-open {
   .officer-feature,
   .donation-layout,
   .partner-card-grid,
+  .sponsor-level-grid,
   .spotlight,
   .event-layout,
   .content-list {

@@ -16,6 +16,16 @@ const requiredFields = [
   "communicationConsent"
 ];
 
+const sponsorshipLevels = {
+  "Legacy Partner": "$5,000",
+  "Dignity Partner": "$2,500",
+  "Compassion Partner": "$1,000",
+  "Hope Partner": "$500",
+  "Community Friend": "$250",
+  "In-Kind Partner": "Varies",
+  "Custom Partnership": ""
+};
+
 function sanitize(value) {
   return String(value || "").replace(/\u0000/g, "").trim();
 }
@@ -71,7 +81,7 @@ function buildSubmissionText(submission) {
     "",
     "Sponsorship Details",
     `Sponsorship level: ${submission.sponsorshipLevel}`,
-    `Sponsorship amount: $${submission.sponsorshipAmount}`,
+    `Sponsorship amount: ${submission.sponsorshipAmount}`,
     `Payment method: ${submission.paymentMethod}`,
     `Logo or recognition material status: ${submission.logoStatus || "Not provided"}`,
     `Support areas: ${supportAreas.join("; ") || "Not selected"}`,
@@ -98,6 +108,11 @@ export default async function handler(request, response) {
   const missingFields = requiredFields.filter((field) => !submission[field]);
   if (missingFields.length > 0) {
     response.status(400).json({ error: "Required fields are missing.", missingFields });
+    return;
+  }
+
+  if (!Object.prototype.hasOwnProperty.call(sponsorshipLevels, submission.sponsorshipLevel)) {
+    response.status(400).json({ error: "The selected sponsorship level is not valid." });
     return;
   }
 
