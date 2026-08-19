@@ -194,6 +194,7 @@ const officerProfiles = {
     name: "Sierra Heyward-Lance, MS",
     photo: "assets/sierra.jpeg",
     alt: "Sierra Heyward-Lance",
+    photoPosition: "52% 14%",
     email: "admin@cltimmons.org",
     contactUrl: "officer-contact.html?person=education-director",
     bio: "Sierra Heyward-Lance serves as Director of Education, bringing more than 15 years of experience across education, youth development, philanthropy, strategic partnerships, fund development, event execution, and community impact.",
@@ -282,6 +283,7 @@ function renderOfficerProfile(profile) {
   if (!profile.noPhoto) {
     officerPhoto.src = profile.photo;
     officerPhoto.alt = profile.alt;
+    officerPhoto.style.objectPosition = profile.photoPosition || "";
   }
   officerRole.textContent = profile.role;
   officerName.textContent = profile.name;
