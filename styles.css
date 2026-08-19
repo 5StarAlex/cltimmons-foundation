@@ -843,6 +843,55 @@ a {
     url("assets/redcomponent.png") center / cover;
 }
 
+.page-hero-about,
+.page-hero-programs,
+.page-hero-scholarship,
+.page-hero-donate,
+.page-hero-community,
+.page-hero-cathys-closet {
+  min-height: 390px;
+  display: flex;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+}
+
+.page-hero-about {
+  background-image:
+    linear-gradient(90deg, rgba(52, 6, 4, 0.9) 0%, rgba(80, 10, 7, 0.74) 48%, rgba(80, 10, 7, 0.28) 100%),
+    url("assets/page-banner-about.png");
+}
+
+.page-hero-programs {
+  background-image:
+    linear-gradient(90deg, rgba(52, 6, 4, 0.92) 0%, rgba(80, 10, 7, 0.74) 50%, rgba(80, 10, 7, 0.3) 100%),
+    url("assets/page-banner-programs.png");
+}
+
+.page-hero-scholarship {
+  background-image:
+    linear-gradient(90deg, rgba(52, 6, 4, 0.9) 0%, rgba(80, 10, 7, 0.72) 48%, rgba(80, 10, 7, 0.28) 100%),
+    url("assets/page-banner-scholarship.png");
+}
+
+.page-hero-donate {
+  background-image:
+    linear-gradient(90deg, rgba(52, 6, 4, 0.92) 0%, rgba(80, 10, 7, 0.72) 50%, rgba(80, 10, 7, 0.3) 100%),
+    url("assets/page-banner-donate.png");
+}
+
+.page-hero-community {
+  background-image:
+    linear-gradient(90deg, rgba(52, 6, 4, 0.9) 0%, rgba(80, 10, 7, 0.7) 48%, rgba(80, 10, 7, 0.28) 100%),
+    url("assets/page-banner-community.png");
+}
+
+.page-hero-cathys-closet {
+  background-image:
+    linear-gradient(90deg, rgba(52, 6, 4, 0.92) 0%, rgba(80, 10, 7, 0.72) 50%, rgba(80, 10, 7, 0.3) 100%),
+    url("assets/page-banner-cathys-closet.png");
+}
+
 .page-hero-inner {
   width: min(1180px, 100%);
   margin: 0 auto;
