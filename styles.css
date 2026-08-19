@@ -848,6 +848,7 @@ a {
 .page-hero-scholarship,
 .page-hero-donate,
 .page-hero-community,
+.page-hero-partnership,
 .page-hero-cathys-closet {
   min-height: 390px;
   display: flex;
@@ -884,6 +885,12 @@ a {
   background-image:
     linear-gradient(90deg, rgba(52, 6, 4, 0.9) 0%, rgba(80, 10, 7, 0.7) 48%, rgba(80, 10, 7, 0.28) 100%),
     url("assets/page-banner-community.png");
+}
+
+.page-hero-partnership {
+  background-image:
+    linear-gradient(90deg, rgba(52, 6, 4, 0.9) 0%, rgba(80, 10, 7, 0.7) 48%, rgba(80, 10, 7, 0.28) 100%),
+    url("assets/page-banner-partnership.png");
 }
 
 .page-hero-cathys-closet {
