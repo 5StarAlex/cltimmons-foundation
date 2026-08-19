@@ -200,6 +200,10 @@ a {
   text-wrap: balance;
 }
 
+.hero h1 .title-tail {
+  max-width: 680px;
+}
+
 .nowrap {
   white-space: nowrap;
 }
