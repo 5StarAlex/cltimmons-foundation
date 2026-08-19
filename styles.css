@@ -266,12 +266,28 @@ a {
 }
 
 .hero-note {
-  margin-top: 12px !important;
+  display: inline-grid;
+  grid-template-columns: 18px 1fr;
+  align-items: center;
+  gap: 8px;
+  width: auto !important;
+  margin-top: 14px !important;
   color: #f8ddb0 !important;
-  font-size: 15px !important;
+  font-size: 12px !important;
   font-weight: 800;
-  letter-spacing: 0.04em;
+  line-height: 1.2 !important;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.hero-note svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .gold-button {
