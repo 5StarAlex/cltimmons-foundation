@@ -14,9 +14,12 @@ const officerRecipients = {
   "cfo-keasia": { email: "klance@cltimmons.org", name: "Keasia Lance" },
   technology: { email: "alance@cltimmons.org", name: "Alexander Lance" },
   "education-affairs": { email: "mwilliamson@cltimmons.org", name: "Michiko Williamson" },
+  "education-director": { email: "admin@cltimmons.org", name: "Sierra Heyward-Lance, MS" },
+  "civic-municipal": { email: "admin@cltimmons.org", name: "Coty Thibodeau" },
   parish: { email: "pbrown@cltimmons.org", name: "Parish Brown" },
   brenda: { email: "bperkins@cltimmons.org", name: "Brenda Perkins" },
   health: { email: "admin@cltimmons.org", name: "Shearia Burch-McElveen, MSN" },
+  "behavioral-health": { email: "admin@cltimmons.org", name: "Behavioral Health Director - Vacant" },
   governance: { email: "admin@cltimmons.org", name: "The Honorable Adonikam J. Hudson" },
   "legacy-members": { email: "admin@cltimmons.org", name: "Legacy Members" }
 };

@@ -159,6 +159,16 @@ const officerProfiles = {
     bio: "Oscar Merchant III serves as Director of Community Impact, bringing public service, servant leadership, mentorship, and relationship-building experience to the Foundation's outreach work.",
     fullBio: "Oscar Merchant III is a dedicated public servant with more than 14 years of experience in law enforcement, proudly serving the City of Florence Police Department. Throughout his career, he has worked in patrol, community engagement, code enforcement, and specialized enforcement units while building strong relationships with residents, businesses, and community organizations.\n\nOscar is passionate about servant leadership and believes in leading through integrity, accountability, and service to others. He has served as a mentor to youth, helped lead numerous community outreach initiatives, and has been recognized as Officer of the Year twice and Officer of the Quarter. He is also a certified drone pilot and bicycle officer, continually seeking opportunities to grow professionally and better serve the community.\n\nIn addition to his professional experience, Oscar is pursuing a bachelor's degree while focusing his studies on leadership and organizational development. His commitment to lifelong learning, collaboration, and community involvement has prepared him to contribute effectively in a board leadership role.\n\nOscar and his wife, Sharrie, are proud parents of two children and are committed to making Florence a safer, stronger, and more connected community."
   },
+  "civic-municipal": {
+    role: "Director of Civic & Municipal Partnership",
+    name: "Coty Thibodeau",
+    photo: "assets/coty.jpeg",
+    alt: "Coty Thibodeau",
+    email: "admin@cltimmons.org",
+    contactUrl: "officer-contact.html?person=civic-municipal",
+    bio: "Coty Thibodeau serves as Director of Civic & Municipal Partnership, bringing 21 years of law enforcement service, mentorship, school resource work, crisis de-escalation training, and community-centered service to the Foundation.",
+    fullBio: "Coty Thibodeau brings 21 years of law enforcement service to the Pee Dee. He began his career with the City of Darlington Police Department in 2004 and joined the City of Florence Police Department in 2007, where he rose to the rank of Corporal and supervised a shift of ten officers.\n\nHe served as a School Resource Officer and a D.A.R.E. instructor, working directly with students, and spent much of his career as a field trainer and mentor to junior officers. He is trained in crisis de-escalation and mental health response and currently serves in hospital security, where he supports patients and families during difficult moments.\n\nCoty is known for going out of his way for people. Whether on a shift or in his own neighborhood, he meets people where they are and helps without asking what they can offer in return. That is the spirit he brings to this work."
+  },
   technology: {
     role: "Director of Technology and Software Development",
     name: "Alexander Lance, Certified Student Researcher",
@@ -178,6 +188,16 @@ const officerProfiles = {
     contactUrl: "officer-contact.html?person=education-affairs",
     bio: "Michiko Williamson serves as Legacy Council Chair, helping guide remembrance, family connection, and mission continuity as the Foundation carries Cathy Lance Timmons' legacy forward.",
     fullBio: "Michiko Williamson serves as Legacy Council Chair for The Cathy Lance Timmons Foundation. In this role, she helps guide remembrance, family connection, and mission continuity as the Foundation carries Cathy Lance Timmons' legacy forward.\n\nHer leadership supports the mission to encourage lifelong learning, strengthen families, and honor Cathy's belief in the power of education to change lives."
+  },
+  "education-director": {
+    role: "Director of Education",
+    name: "Sierra Heyward-Lance, MS",
+    photo: "assets/sierra.jpeg",
+    alt: "Sierra Heyward-Lance",
+    email: "admin@cltimmons.org",
+    contactUrl: "officer-contact.html?person=education-director",
+    bio: "Sierra Heyward-Lance serves as Director of Education, bringing more than 15 years of experience across education, youth development, philanthropy, strategic partnerships, fund development, event execution, and community impact.",
+    fullBio: "Sierra Heyward-Lance, MS is a visionary, strategist, and community engagement professional with more than 15 years of experience advancing initiatives at the intersection of education, youth development, philanthropy, fund development, event execution, strategic partnerships, and community impact. Her work spans nonprofit, corporate, civic, and higher education environments, where she has helped organizations strengthen relationships, develop resources, execute impactful initiatives, and create meaningful experiences for the communities they serve.\n\nA graduate of Benedict College and Central Michigan University, Sierra brings a people-centered and strategic approach to her work. She is passionate about creating opportunities that educate, empower, and connect individuals and communities to resources that support long-term growth and well-being.\n\nAs a nonprofit professional and community advocate, Sierra is committed to using education, partnerships, and philanthropy as catalysts for meaningful and sustainable impact."
   },
   parish: {
     role: "Director-at-Large",
@@ -206,6 +226,14 @@ const officerProfiles = {
     contactUrl: "officer-contact.html?person=health",
     bio: "Shearia Burch-McElveen serves as Director of Health & Clinical Partnerships. A Florence, South Carolina resident, she brings a strong background in health science, nursing, women's health, and service-centered care.",
     fullBio: "Shearia Burch-McElveen serves as Director of Health & Clinical Partnerships for The Cathy Lance Timmons Foundation. She is married with children and currently resides in Florence, South Carolina.\n\nShearia is a graduate of Aynor High School. She earned her Bachelor of Science in Health Science from Herzing University and her Master of Science in Nursing (MSN) from Coker University.\n\nShe is currently employed with McLeod Health, where she has worked in Women's Health for the past 11 years. Service has been a lifelong passion for Shearia, and she brings that commitment to her work supporting health-centered partnerships, care, and community well-being."
+  },
+  "behavioral-health": {
+    role: "Behavioral Health Director",
+    name: "Vacant",
+    noPhoto: true,
+    email: "admin@cltimmons.org",
+    contactUrl: "officer-contact.html?person=behavioral-health",
+    bio: "The Behavioral Health Director position is currently vacant. The Foundation continues to list this role as part of its commitment to mental health, well-being, and whole-person community support."
   },
   governance: {
     role: "Director of Legal & Governance",
