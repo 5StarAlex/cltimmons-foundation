@@ -329,6 +329,11 @@ function validateSponsorshipSubmission(submission) {
     return { valid: false, status: 400, payload: { error: "The selected sponsorship level is not valid." } };
   }
 
+  const expectedAmount = sponsorshipLevels[submission.sponsorshipLevel];
+  if (submission.sponsorshipLevel !== "Custom Partnership" && submission.sponsorshipAmount !== expectedAmount) {
+    return { valid: false, status: 400, payload: { error: "The sponsorship amount must match the selected sponsorship level." } };
+  }
+
   return { valid: true };
 }
 

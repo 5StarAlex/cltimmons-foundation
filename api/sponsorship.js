@@ -116,6 +116,12 @@ export default async function handler(request, response) {
     return;
   }
 
+  const expectedAmount = sponsorshipLevels[submission.sponsorshipLevel];
+  if (submission.sponsorshipLevel !== "Custom Partnership" && submission.sponsorshipAmount !== expectedAmount) {
+    response.status(400).json({ error: "The sponsorship amount must match the selected sponsorship level." });
+    return;
+  }
+
   if (!process.env.RESEND_API_KEY) {
     response.status(503).json({ error: "Email provider is not configured." });
     return;

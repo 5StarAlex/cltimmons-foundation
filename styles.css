@@ -1074,6 +1074,12 @@ a {
   resize: vertical;
 }
 
+.scholarship-form input.readonly-field {
+  color: var(--muted);
+  background: rgba(244, 237, 224, 0.72);
+  cursor: not-allowed;
+}
+
 .scholarship-form .essay-field {
   min-height: 220px;
 }

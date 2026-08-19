@@ -579,7 +579,16 @@ if (sponsorshipForm) {
     const selectedOption = sponsorshipLevelField.selectedOptions[0];
     const amount = selectedOption?.dataset.amount || "";
     const description = selectedOption?.dataset.description || "Select a sponsorship level to see what it supports.";
-    if (fillAmount) {
+    const selectedLevel = selectedOption?.value || "";
+    const isCustomLevel = selectedLevel === "Custom Partnership";
+
+    sponsorshipAmountField.readOnly = Boolean(selectedLevel && !isCustomLevel);
+    sponsorshipAmountField.classList.toggle("readonly-field", sponsorshipAmountField.readOnly);
+    sponsorshipAmountField.placeholder = isCustomLevel ? "Enter a custom sponsorship amount" : "Select a level";
+
+    if (selectedLevel && !isCustomLevel) {
+      sponsorshipAmountField.value = amount;
+    } else if (fillAmount) {
       sponsorshipAmountField.value = amount;
     }
     sponsorshipDescription.textContent = description;
@@ -620,6 +629,7 @@ if (sponsorshipForm) {
     clearDraftButton.addEventListener("click", () => {
       window.localStorage.removeItem(sponsorshipDraftKey);
       sponsorshipForm.reset();
+      updateSponsorshipLevelDetails();
       if (sponsorshipStatus) {
         sponsorshipStatus.textContent = "Sponsorship draft cleared.";
       }
@@ -654,6 +664,7 @@ if (sponsorshipForm) {
       .then(() => {
         window.localStorage.removeItem(sponsorshipDraftKey);
         sponsorshipForm.reset();
+        updateSponsorshipLevelDetails();
         if (sponsorshipStatus) {
           sponsorshipStatus.textContent = `Thank you. Your sponsorship information was sent to ${sponsorshipEmail}.`;
         }
