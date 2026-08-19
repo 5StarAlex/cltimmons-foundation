@@ -1041,6 +1041,61 @@ a {
   background: rgba(255, 250, 242, 0.72);
 }
 
+.collect-section {
+  background:
+    linear-gradient(180deg, rgba(255, 250, 242, 0.96), rgba(244, 232, 210, 0.62));
+}
+
+.collect-intro {
+  max-width: 780px;
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 34px;
+  border-top: 1px solid rgba(107, 16, 11, 0.16);
+  border-bottom: 1px solid rgba(107, 16, 11, 0.16);
+}
+
+.collection-item {
+  min-height: 250px;
+  padding: 30px 26px;
+  background: rgba(255, 250, 242, 0.52);
+}
+
+.collection-item + .collection-item {
+  border-left: 1px solid rgba(107, 16, 11, 0.12);
+}
+
+.collection-item svg {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 22px;
+  color: var(--gold);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.collection-item h3 {
+  margin: 0 0 12px;
+  color: var(--burgundy);
+  font-family: var(--serif);
+  font-size: 26px;
+  line-height: 1.08;
+}
+
+.collection-item p {
+  margin: 0;
+  color: #4c3a35;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
 .focus-grid,
 .flyer-grid {
   display: grid;
@@ -2038,6 +2093,13 @@ body.modal-open {
 }
 
 @media (max-width: 1180px) {
+  .collection-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .collection-item:nth-child(odd) {
+    border-left: 0;
+  }
   .nav-wrap {
     padding: 0 28px;
     gap: 20px;
@@ -2132,8 +2194,13 @@ body.modal-open {
   .flyer-grid,
   .spotlight,
   .event-layout,
+  .collection-grid,
   .content-list {
     grid-template-columns: 1fr;
+  }
+
+  .collection-item + .collection-item {
+    border-left: 0;
   }
 
   .metric-grid,
@@ -2337,6 +2404,21 @@ body.modal-open {
   .hero-support {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+
+  .collection-grid {
+    border-top: 0;
+    border-bottom: 0;
+    gap: 14px;
+  }
+
+  .collection-item {
+    min-height: 0;
+    border: 1px solid rgba(107, 16, 11, 0.12);
+  }
+
+  .collection-item + .collection-item {
+    border-left: 1px solid rgba(107, 16, 11, 0.12);
   }
 
   .page-hero-inner,
