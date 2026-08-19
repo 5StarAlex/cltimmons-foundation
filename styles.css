@@ -229,36 +229,33 @@ a {
 .hero-support {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0;
+  gap: 18px;
   width: min(100%, 660px);
   margin-top: 24px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(231, 180, 82, 0.42);
+  padding-top: 6px;
 }
 
 .hero-support span {
-  position: relative;
-  display: block;
-  padding: 0 18px 0 16px;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: start;
+  gap: 10px;
+  padding: 0;
   color: rgba(255, 250, 243, 0.9);
   font-size: 15px;
   font-weight: 800;
   line-height: 1.34;
 }
 
-.hero-support span::before {
-  content: "";
-  position: absolute;
-  top: 0.6em;
-  left: 0;
-  width: 6px;
-  height: 6px;
-  background: var(--gold);
-  border-radius: 50%;
-}
-
-.hero-support span + span {
-  border-left: 1px solid rgba(255, 250, 243, 0.24);
+.hero-support svg {
+  width: 24px;
+  height: 24px;
+  color: var(--gold);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .hero-legacy {
@@ -2326,10 +2323,6 @@ body.modal-open {
     gap: 12px;
   }
 
-  .hero-support span {
-    border-left: 0;
-  }
-
   .page-hero-inner,
   .section-inner,
   .officer-feature,
@@ -2382,8 +2375,13 @@ body.modal-open {
   }
 
   .hero-support span {
-    padding: 0 0 0 16px;
+    grid-template-columns: 26px 1fr;
     font-size: 14px;
+  }
+
+  .hero-support svg {
+    width: 22px;
+    height: 22px;
   }
 
   .pillar-grid {
