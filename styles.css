@@ -200,10 +200,6 @@ a {
   text-wrap: balance;
 }
 
-.hero h1 .title-tail {
-  max-width: 680px;
-}
-
 .nowrap {
   white-space: nowrap;
 }
@@ -472,6 +468,20 @@ a {
 .hero-actions .outline-button,
 .cta-band .outline-button {
   margin-top: 0;
+}
+
+.hero .hero-actions .outline-button {
+  color: #fffaf4;
+  background: rgba(255, 250, 244, 0.13);
+  border-color: rgba(255, 250, 244, 0.82);
+  box-shadow: 0 12px 24px rgba(35, 3, 2, 0.18);
+}
+
+.hero .hero-actions .outline-button:hover,
+.hero .hero-actions .outline-button:focus-visible {
+  color: var(--burgundy);
+  background: #fffaf4;
+  border-color: #fffaf4;
 }
 
 .page-hero .outline-button,
