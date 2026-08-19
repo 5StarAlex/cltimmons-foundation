@@ -29,7 +29,7 @@ loadLocalEnv();
 const port = Number(process.env.PORT || 8000);
 const scholarshipRecipient = "scholarships@cltimmons.org";
 const sponsorshipRecipient = "partnerships@cltimmons.org";
-const defaultFromEmail = "The Cathy Lance Timmons Foundation <noreply@cltimmons.org>";
+const defaultFromEmail = "The Cathy Lance-Timmons Foundation <noreply@cltimmons.org>";
 const resendTimeoutMs = 15000;
 const recipients = {
   administration: "admin@cltimmons.org",

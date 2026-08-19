@@ -205,6 +205,15 @@ a {
   overflow-wrap: break-word;
 }
 
+.hero-note {
+  margin-top: 18px !important;
+  color: #f8ddb0 !important;
+  font-size: 17px !important;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .gold-button {
   appearance: none;
   -webkit-appearance: none;
@@ -263,7 +272,7 @@ a {
 
 .poster-modal-panel {
   position: relative;
-  width: min(88vw, 760px);
+  width: min(92vw, 860px);
   max-height: min(88vh, 920px);
   padding: clamp(10px, 1.6vw, 16px);
   background:
@@ -281,22 +290,77 @@ a {
   opacity: 1;
 }
 
-.poster-modal-link {
-  display: block;
+.poster-modal-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 4px 58px 12px 8px;
+}
+
+.poster-modal-heading h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 44px);
+  line-height: 1;
+}
+
+.poster-carousel {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) 48px;
+  align-items: center;
+  gap: 12px;
+}
+
+.poster-frame {
   overflow: hidden;
+  height: min(68vh, 760px);
+  background: #fffaf2;
+  border: 1px solid rgba(107, 16, 11, 0.16);
   border-radius: 5px;
-  outline: none;
 }
 
-.poster-modal-link:focus-visible {
-  box-shadow: 0 0 0 4px rgba(216, 162, 74, 0.48);
-}
-
-.poster-modal-link img {
+.poster-frame iframe,
+.flyer-preview iframe {
   width: 100%;
-  max-height: calc(88vh - 54px);
-  object-fit: contain;
-  background: #f7dda9;
+  height: 100%;
+  border: 0;
+  background: #fffaf2;
+}
+
+.poster-nav {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 64px;
+  color: #fffaf4;
+  background: var(--burgundy);
+  border: 1px solid rgba(255, 250, 244, 0.38);
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: var(--serif);
+  font-size: 44px;
+  line-height: 1;
+}
+
+.poster-nav:hover,
+.poster-nav:focus-visible {
+  background: var(--burgundy-deep);
+}
+
+.poster-modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 14px 8px 2px;
+}
+
+.poster-modal-actions span {
+  color: var(--muted);
+  font-weight: 900;
 }
 
 .poster-modal-kicker {
@@ -340,6 +404,14 @@ a {
   gap: 14px;
   flex-wrap: wrap;
   margin-top: 30px;
+}
+
+.contact-line,
+.cta-tagline {
+  margin-top: 28px;
+  color: var(--muted);
+  font-weight: 900;
+  letter-spacing: 0.04em;
 }
 
 .hero-actions .gold-button,
@@ -879,6 +951,65 @@ a {
   background: rgba(255, 250, 242, 0.72);
 }
 
+.focus-grid,
+.flyer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 34px;
+}
+
+.flyer-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.focus-card,
+.flyer-card {
+  padding: 26px;
+  background: rgba(255, 250, 242, 0.86);
+  border: 1px solid rgba(107, 16, 11, 0.12);
+  border-radius: 6px;
+  box-shadow: 0 16px 34px rgba(43, 6, 4, 0.08);
+}
+
+.focus-card h3,
+.flyer-card h3 {
+  margin: 0 0 12px;
+  color: var(--burgundy);
+  font-family: var(--serif);
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.focus-card p,
+.flyer-card p {
+  margin: 0;
+}
+
+.decision-note {
+  margin-top: 28px;
+  padding: 28px;
+  color: #fffaf4;
+  background: var(--burgundy);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+}
+
+.decision-note .eyebrow,
+.decision-note p {
+  color: #fffaf4;
+}
+
+.flyer-preview {
+  overflow: hidden;
+  height: min(68vh, 620px);
+  min-height: 460px;
+  margin-bottom: 18px;
+  background: #fffaf2;
+  border: 1px solid rgba(107, 16, 11, 0.16);
+  border-radius: 5px;
+}
+
 .event-hero {
   padding-bottom: 64px;
 }
@@ -904,8 +1035,11 @@ a {
   box-shadow: var(--shadow);
 }
 
-.event-poster-frame img {
+.event-poster-frame img,
+.event-poster-frame iframe {
   width: 100%;
+  min-height: 620px;
+  border: 0;
   border-radius: 5px;
 }
 
@@ -1904,6 +2038,8 @@ body.modal-open {
   .donation-layout,
   .partner-card-grid,
   .sponsor-level-grid,
+  .focus-grid,
+  .flyer-grid,
   .spotlight,
   .event-layout,
   .content-list {
@@ -1982,8 +2118,28 @@ body.modal-open {
     height: 42px;
   }
 
-  .poster-modal-link img {
-    max-height: calc(92vh - 36px);
+  .poster-carousel {
+    grid-template-columns: 1fr;
+  }
+
+  .poster-nav {
+    width: 100%;
+    height: 44px;
+    font-size: 34px;
+  }
+
+  .poster-frame {
+    height: min(62vh, 560px);
+  }
+
+  .poster-modal-heading {
+    display: block;
+    padding-right: 52px;
+  }
+
+  .flyer-preview {
+    min-height: 360px;
+    height: 58vh;
   }
 
   .hero,

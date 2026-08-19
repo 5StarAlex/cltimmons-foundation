@@ -73,10 +73,38 @@ document.querySelectorAll(".site-nav a").forEach((link) => {
 
 const posterModal = document.querySelector("[data-poster-modal]");
 const posterModalClose = document.querySelector("[data-poster-modal-close]");
+const flyerFrame = document.querySelector("[data-flyer-frame]");
+const flyerLink = document.querySelector("[data-flyer-link]");
+const flyerCounter = document.querySelector("[data-flyer-counter]");
+const flyerPrevious = document.querySelector("[data-flyer-prev]");
+const flyerNext = document.querySelector("[data-flyer-next]");
+const popupFlyers = [
+  {
+    title: "Cathy's Closet Community Store flyer",
+    src: "assets/cathys-closet-community-store-flyer.pdf"
+  },
+  {
+    title: "Cathy's Closet support needed flyer",
+    src: "assets/cathys-closet-support-needed-flyer.pdf"
+  }
+];
+let activeFlyerIndex = 0;
+
+function renderFlyer(index) {
+  if (!flyerFrame || !flyerLink || !flyerCounter) return;
+
+  activeFlyerIndex = (index + popupFlyers.length) % popupFlyers.length;
+  const flyer = popupFlyers[activeFlyerIndex];
+  flyerFrame.src = flyer.src;
+  flyerFrame.title = flyer.title;
+  flyerLink.href = flyer.src;
+  flyerCounter.textContent = `${activeFlyerIndex + 1} of ${popupFlyers.length}`;
+}
 
 function openPosterModal() {
   if (!posterModal) return;
 
+  renderFlyer(activeFlyerIndex);
   posterModal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
   window.requestAnimationFrame(() => {
@@ -108,6 +136,18 @@ if (posterModalClose) {
   posterModalClose.addEventListener("click", closePosterModal);
 }
 
+if (flyerPrevious) {
+  flyerPrevious.addEventListener("click", () => {
+    renderFlyer(activeFlyerIndex - 1);
+  });
+}
+
+if (flyerNext) {
+  flyerNext.addEventListener("click", () => {
+    renderFlyer(activeFlyerIndex + 1);
+  });
+}
+
 const officerProfiles = {
   founder: {
     role: "Board Chair & President",
@@ -117,7 +157,7 @@ const officerProfiles = {
     email: "tlance@cltimmons.org",
     contactUrl: "officer-contact.html?person=founder",
     bio: "Daughter of Cathy Lance-Timmons, Tatyana serves as Board Chair & President, guiding the Foundation with clinical social work experience, business training, and a deep commitment to Cathy's legacy of compassion, education, and service.",
-    fullBio: "Daughter of Cathy Lance-Timmons, Tatyana holds a Master of Social Work (MSW) and a Master of Business Administration (MBA), and is a Licensed Master Social Worker (LMSW) and Licensed Clinical Social Worker Associate (LCSWA). She founded The Cathy Lance Timmons Foundation as a way to give back to the community her mother advocated for and loved so deeply, keeping her legacy alive and continuing to encourage others in positive, meaningful ways.\n\nCathy meant the world to her, and her love and passion for others lives on through this work. Her hope is that the foundation will reach communities everywhere, offering support through its community impact and education initiatives."
+    fullBio: "Daughter of Cathy Lance-Timmons, Tatyana holds a Master of Social Work (MSW) and a Master of Business Administration (MBA), and is a Licensed Master Social Worker (LMSW) and Licensed Clinical Social Worker Associate (LCSWA). She founded The Cathy Lance-Timmons Foundation as a way to give back to the community her mother advocated for and loved so deeply, keeping her legacy alive and continuing to encourage others in positive, meaningful ways.\n\nCathy meant the world to her, and her love and passion for others lives on through this work. Her hope is that the foundation will reach communities everywhere, offering support through its community impact and education initiatives."
   },
   "cfo-keasia": {
     role: "Treasurer & Director of Finance",
@@ -127,7 +167,7 @@ const officerProfiles = {
     email: "klance@cltimmons.org",
     contactUrl: "officer-contact.html?person=cfo-keasia",
     bio: "Keasia Lance serves as Treasurer & Director of Finance, bringing strategic business, healthcare operations, budgeting, project management, and organizational leadership experience to the Foundation's stewardship work.",
-    fullBio: "Keasia Lance is a strategic business and healthcare operations leader with extensive experience in financial oversight, project management, and organizational leadership. As Treasurer & Director of Finance, she brings a strong background in budgeting, fiscal accountability, and operational excellence.\n\nKeasia currently serves as a Project Leader at GE HealthCare, where she leads cross-functional initiatives, develops standardized processes, and drives operational improvements across the U.S. and Canada.\n\nHer financial leadership began at Winthrop University, where she served as the Allocation Administrator for the Student Allocation Committee. In this role, she oversaw an annual budget of more than $1 million, managing the equitable allocation of funding to over 100 student organizations. This experience strengthened her commitment to transparency, accountability, and responsible financial management.\n\nKeasia earned a Master of Business Administration with a focus in Project Management from the University of South Carolina and a Bachelor of Science in Health Care Management from Winthrop University. She is passionate about using strategic leadership and sound financial stewardship to strengthen organizations and create lasting community impact.\n\nKeasia is honored to serve on the Board of Directors as Treasurer & Director of Finance for the Cathy Lance Timmons Foundation. Inspired by the life and legacy of her late aunt, Cathy Lance, she is committed to carrying forward the values Cathy instilled in her: the importance of lifelong learning, giving back to the community, and leading with a servant's heart."
+    fullBio: "Keasia Lance is a strategic business and healthcare operations leader with extensive experience in financial oversight, project management, and organizational leadership. As Treasurer & Director of Finance, she brings a strong background in budgeting, fiscal accountability, and operational excellence.\n\nKeasia currently serves as a Project Leader at GE HealthCare, where she leads cross-functional initiatives, develops standardized processes, and drives operational improvements across the U.S. and Canada.\n\nHer financial leadership began at Winthrop University, where she served as the Allocation Administrator for the Student Allocation Committee. In this role, she oversaw an annual budget of more than $1 million, managing the equitable allocation of funding to over 100 student organizations. This experience strengthened her commitment to transparency, accountability, and responsible financial management.\n\nKeasia earned a Master of Business Administration with a focus in Project Management from the University of South Carolina and a Bachelor of Science in Health Care Management from Winthrop University. She is passionate about using strategic leadership and sound financial stewardship to strengthen organizations and create lasting community impact.\n\nKeasia is honored to serve on the Board of Directors as Treasurer & Director of Finance for the Cathy Lance-Timmons Foundation. Inspired by the life and legacy of her late aunt, Cathy Lance, she is committed to carrying forward the values Cathy instilled in her: the importance of lifelong learning, giving back to the community, and leading with a servant's heart."
   },
   "strategic-marketing": {
     role: "Director of Marketing, Communications & Strategic Partnerships",
@@ -137,7 +177,7 @@ const officerProfiles = {
     email: "ellance@cltimmons.org",
     contactUrl: "officer-contact.html?person=strategic-marketing",
     bio: "Elizabeth Lance serves as Director of Marketing, Communications & Strategic Partnerships, helping build meaningful partnerships, strengthen outreach, and expand the Foundation's reach through community-centered storytelling.",
-    fullBio: "Elizabeth Lance is a community engagement and marketing professional with a passion for building meaningful partnerships that strengthen organizations and create lasting impact. As Director of Marketing, Communications & Strategic Partnerships, she brings expertise in strategic communications, relationship building, and community outreach to help expand the Foundation's reach and further its mission.\n\nElizabeth currently serves as Community Marketing Manager for Rycor Heating & Cooling, where she develops and manages community partnerships, leads marketing initiatives, and represents the company throughout the Carolinas. Her work focuses on connecting businesses, nonprofits, schools, and community organizations to create lasting value for the communities they serve.\n\nShe earned a Bachelor of Science in Child Development and Family Studies from North Carolina A&T State University. Her educational background and professional experience have instilled a deep appreciation for the transformative power of education and community support. She is passionate about advancing opportunities that encourage lifelong learning, strengthen families, and empower individuals to reach their fullest potential.\n\nElizabeth is honored to serve on the Board of Directors as Director of Marketing, Communications & Strategic Partnerships for the Cathy Lance Timmons Foundation. She is proud to carry forward the legacy of her late Cousin Cathy, rooted in compassion, service, and an unwavering belief in the power of education to change lives."
+    fullBio: "Elizabeth Lance is a community engagement and marketing professional with a passion for building meaningful partnerships that strengthen organizations and create lasting impact. As Director of Marketing, Communications & Strategic Partnerships, she brings expertise in strategic communications, relationship building, and community outreach to help expand the Foundation's reach and further its mission.\n\nElizabeth currently serves as Community Marketing Manager for Rycor Heating & Cooling, where she develops and manages community partnerships, leads marketing initiatives, and represents the company throughout the Carolinas. Her work focuses on connecting businesses, nonprofits, schools, and community organizations to create lasting value for the communities they serve.\n\nShe earned a Bachelor of Science in Child Development and Family Studies from North Carolina A&T State University. Her educational background and professional experience have instilled a deep appreciation for the transformative power of education and community support. She is passionate about advancing opportunities that encourage lifelong learning, strengthen families, and empower individuals to reach their fullest potential.\n\nElizabeth is honored to serve on the Board of Directors as Director of Marketing, Communications & Strategic Partnerships for the Cathy Lance-Timmons Foundation. She is proud to carry forward the legacy of her late Cousin Cathy, rooted in compassion, service, and an unwavering belief in the power of education to change lives."
   },
   secretary: {
     role: "Secretary & Director of Administration",
@@ -186,8 +226,8 @@ const officerProfiles = {
     alt: "Michiko Williamson",
     email: "mwilliamson@cltimmons.org",
     contactUrl: "officer-contact.html?person=education-affairs",
-    bio: "Michiko Williamson serves as Legacy Council Chair, helping guide remembrance, family connection, and mission continuity as the Foundation carries Cathy Lance Timmons' legacy forward.",
-    fullBio: "Michiko Williamson serves as Legacy Council Chair for The Cathy Lance Timmons Foundation. In this role, she helps guide remembrance, family connection, and mission continuity as the Foundation carries Cathy Lance Timmons' legacy forward.\n\nHer leadership supports the mission to encourage lifelong learning, strengthen families, and honor Cathy's belief in the power of education to change lives."
+    bio: "Michiko Williamson serves as Legacy Council Chair, helping guide remembrance, family connection, and mission continuity as the Foundation carries Cathy Lance-Timmons' legacy forward.",
+    fullBio: "Michiko Williamson serves as Legacy Council Chair for The Cathy Lance-Timmons Foundation. In this role, she helps guide remembrance, family connection, and mission continuity as the Foundation carries Cathy Lance-Timmons' legacy forward.\n\nHer leadership supports the mission to encourage lifelong learning, strengthen families, and honor Cathy's belief in the power of education to change lives."
   },
   "education-director": {
     role: "Director of Education",
@@ -225,7 +265,7 @@ const officerProfiles = {
     email: "admin@cltimmons.org",
     contactUrl: "officer-contact.html?person=health",
     bio: "Shearia Burch-McElveen serves as Director of Health & Clinical Partnerships. A Florence, South Carolina resident, she brings a strong background in health science, nursing, women's health, and service-centered care.",
-    fullBio: "Shearia Burch-McElveen serves as Director of Health & Clinical Partnerships for The Cathy Lance Timmons Foundation. She is married with children and currently resides in Florence, South Carolina.\n\nShearia is a graduate of Aynor High School. She earned her Bachelor of Science in Health Science from Herzing University and her Master of Science in Nursing (MSN) from Coker University.\n\nShe is currently employed with McLeod Health, where she has worked in Women's Health for the past 11 years. Service has been a lifelong passion for Shearia, and she brings that commitment to her work supporting health-centered partnerships, care, and community well-being."
+    fullBio: "Shearia Burch-McElveen serves as Director of Health & Clinical Partnerships for The Cathy Lance-Timmons Foundation. She is married with children and currently resides in Florence, South Carolina.\n\nShearia is a graduate of Aynor High School. She earned her Bachelor of Science in Health Science from Herzing University and her Master of Science in Nursing (MSN) from Coker University.\n\nShe is currently employed with McLeod Health, where she has worked in Women's Health for the past 11 years. Service has been a lifelong passion for Shearia, and she brings that commitment to her work supporting health-centered partnerships, care, and community well-being."
   },
   "behavioral-health": {
     role: "Behavioral Health Director",
@@ -251,8 +291,8 @@ const officerProfiles = {
     noPhoto: true,
     email: "admin@cltimmons.org",
     contactUrl: "officer-contact.html?person=legacy-members",
-    bio: "Khirsten Timmons serves as Vice President of the Legacy Council, carrying forward the service values she learned from her mother, Cathy Lance Timmons, through advocacy, education, mental health, and community support.\n\nKhila Timmons serves as a Legacy Council member and is pursuing a Bachelor of Science in Biology with a minor in Sociology at Francis Marion University. Her work reflects a commitment to community well-being, service, and lasting impact.",
-    fullBio: "Khirsten Timmons\n\nKhirsten Timmons is a May 2026 graduate of Francis Marion University, where she earned a Bachelor of Science in Political Science with a concentration in Criminal Justice and a minor in Psychology. She previously served as President of the Xi Omicron Chapter of Delta Sigma Theta Sorority, Incorporated. Her leadership reflects a lifelong commitment to advocating for others and strengthening communities.\n\nLong before formal leadership roles, Khirsten's foundation for service was shaped at home by her mother, Cathy Lance Timmons. In her household, community service was a way of life. Cathy often woke her children before sunrise to serve individuals experiencing homelessness, organize clothing donations, and support those in need. These experiences became lasting lessons in compassion, humility, and responsibility.\n\nAs Vice President of the Legacy Council of The Cathy Lance Timmons Foundation, Khirsten is honored to continue her mother's work and values. Following her mother's passing, Khirsten has dedicated herself to advancing the Foundation's efforts in education, mental health, and community support.\n\nShe considers serving as Vice President both a privilege and a responsibility, and believes the most meaningful way to honor her mother is by continuing the work she began.\n\nKhila Timmons\n\nAs the youngest daughter of Cathy Lance-Timmons, Khila Timmons is honored to help carry forward her mother's legacy of compassion, service, and community impact. She serves as a member of the Legacy Council for The Cathy Lance-Timmons Foundation, where she works alongside fellow council members to support the Foundation's mission and help guide initiatives that uplift individuals and strengthen communities.\n\nKhila is currently pursuing a Bachelor of Science in Biology with a minor in Sociology at Francis Marion University. Her studies reflect her passion for understanding people, improving community well-being, and finding meaningful ways to serve others.\n\nShe is committed to honoring her mother's vision by helping create opportunities, inspiring positive change, and ensuring that The Cathy Lance-Timmons Foundation continues to make a lasting difference for generations to come."
+    bio: "Khirsten Timmons serves as Vice President of the Legacy Council, carrying forward the service values she learned from her mother, Cathy Lance-Timmons, through advocacy, education, mental health, and community support.\n\nKhila Timmons serves as a Legacy Council member and is pursuing a Bachelor of Science in Biology with a minor in Sociology at Francis Marion University. Her work reflects a commitment to community well-being, service, and lasting impact.",
+    fullBio: "Khirsten Timmons\n\nKhirsten Timmons is a May 2026 graduate of Francis Marion University, where she earned a Bachelor of Science in Political Science with a concentration in Criminal Justice and a minor in Psychology. She previously served as President of the Xi Omicron Chapter of Delta Sigma Theta Sorority, Incorporated. Her leadership reflects a lifelong commitment to advocating for others and strengthening communities.\n\nLong before formal leadership roles, Khirsten's foundation for service was shaped at home by her mother, Cathy Lance-Timmons. In her household, community service was a way of life. Cathy often woke her children before sunrise to serve individuals experiencing homelessness, organize clothing donations, and support those in need. These experiences became lasting lessons in compassion, humility, and responsibility.\n\nAs Vice President of the Legacy Council of The Cathy Lance-Timmons Foundation, Khirsten is honored to continue her mother's work and values. Following her mother's passing, Khirsten has dedicated herself to advancing the Foundation's efforts in education, mental health, and community support.\n\nShe considers serving as Vice President both a privilege and a responsibility, and believes the most meaningful way to honor her mother is by continuing the work she began.\n\nKhila Timmons\n\nAs the youngest daughter of Cathy Lance-Timmons, Khila Timmons is honored to help carry forward her mother's legacy of compassion, service, and community impact. She serves as a member of the Legacy Council for The Cathy Lance-Timmons Foundation, where she works alongside fellow council members to support the Foundation's mission and help guide initiatives that uplift individuals and strengthen communities.\n\nKhila is currently pursuing a Bachelor of Science in Biology with a minor in Sociology at Francis Marion University. Her studies reflect her passion for understanding people, improving community well-being, and finding meaningful ways to serve others.\n\nShe is committed to honoring her mother's vision by helping create opportunities, inspiring positive change, and ensuring that The Cathy Lance-Timmons Foundation continues to make a lasting difference for generations to come."
   }
 };
 

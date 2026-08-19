@@ -1,5 +1,5 @@
 const scholarshipRecipient = "scholarships@cltimmons.org";
-const defaultFromEmail = "The Cathy Lance Timmons Foundation <noreply@cltimmons.org>";
+const defaultFromEmail = "The Cathy Lance-Timmons Foundation <noreply@cltimmons.org>";
 const resendTimeoutMs = 15000;
 
 const requiredFields = [

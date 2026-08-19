@@ -24,7 +24,7 @@ const officerRecipients = {
   "legacy-members": { email: "admin@cltimmons.org", name: "Legacy Members" }
 };
 
-const defaultFromEmail = "The Cathy Lance Timmons Foundation <noreply@cltimmons.org>";
+const defaultFromEmail = "The Cathy Lance-Timmons Foundation <noreply@cltimmons.org>";
 const resendTimeoutMs = 15000;
 
 function sanitize(value) {
