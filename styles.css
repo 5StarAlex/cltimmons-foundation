@@ -166,14 +166,22 @@ a {
 .hero-inner {
   position: relative;
   z-index: 1;
-  max-width: 670px;
+  max-width: 690px;
+}
+
+.hero-kicker {
+  margin-bottom: 16px !important;
+  color: #f7ddb0 !important;
+  font-size: 14px !important;
+  font-weight: 900;
+  letter-spacing: 0.14em;
 }
 
 .hero h1 {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(54px, 4.6vw, 74px);
-  line-height: 0.98;
+  font-size: clamp(48px, 4.2vw, 68px);
+  line-height: 1.01;
   font-weight: 600;
   letter-spacing: 0;
 }
@@ -205,10 +213,44 @@ a {
   overflow-wrap: break-word;
 }
 
-.hero-note {
+.hero-summary {
+  font-size: clamp(19px, 1.32vw, 22px) !important;
+  line-height: 1.5 !important;
+}
+
+.hero-support {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  width: min(100%, 680px);
+  margin-top: 22px;
+}
+
+.hero-support span {
+  display: flex;
+  align-items: center;
+  min-height: 76px;
+  padding: 14px 15px;
+  color: #fffaf3;
+  background: rgba(255, 250, 243, 0.1);
+  border: 1px solid rgba(231, 180, 82, 0.28);
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.28;
+}
+
+.hero-legacy {
   margin-top: 18px !important;
-  color: #f8ddb0 !important;
+  color: rgba(255, 250, 243, 0.86) !important;
   font-size: 17px !important;
+  line-height: 1.45 !important;
+}
+
+.hero-note {
+  margin-top: 12px !important;
+  color: #f8ddb0 !important;
+  font-size: 15px !important;
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -2244,6 +2286,14 @@ body.modal-open {
     width: 100%;
   }
 
+  .hero-support {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-support span {
+    min-height: 0;
+  }
+
   .page-hero-inner,
   .section-inner,
   .officer-feature,
@@ -2286,6 +2336,17 @@ body.modal-open {
     width: 100%;
     max-width: 338px;
     font-size: 17px;
+  }
+
+  .hero-support {
+    width: 100%;
+    max-width: 338px;
+    gap: 8px;
+  }
+
+  .hero-support span {
+    padding: 12px 13px;
+    font-size: 14px;
   }
 
   .pillar-grid {

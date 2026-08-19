@@ -81,11 +81,13 @@ const flyerNext = document.querySelector("[data-flyer-next]");
 const popupFlyers = [
   {
     title: "Cathy's Closet Community Store flyer",
-    src: "assets/cathys-closet-community-store-flyer.pdf"
+    src: "assets/cathys-closet-community-store-flyer.pdf",
+    embedSrc: "assets/cathys-closet-community-store-flyer.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
   },
   {
     title: "Cathy's Closet support needed flyer",
-    src: "assets/cathys-closet-support-needed-flyer.pdf"
+    src: "assets/cathys-closet-support-needed-flyer.pdf",
+    embedSrc: "assets/cathys-closet-support-needed-flyer.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
   }
 ];
 let activeFlyerIndex = 0;
@@ -95,7 +97,7 @@ function renderFlyer(index) {
 
   activeFlyerIndex = (index + popupFlyers.length) % popupFlyers.length;
   const flyer = popupFlyers[activeFlyerIndex];
-  flyerFrame.src = flyer.src;
+  flyerFrame.src = flyer.embedSrc;
   flyerFrame.title = flyer.title;
   flyerLink.href = flyer.src;
   flyerCounter.textContent = `${activeFlyerIndex + 1} of ${popupFlyers.length}`;
