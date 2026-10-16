@@ -153,7 +153,7 @@ if (flyerNext) {
 const officerProfiles = {
   founder: {
     role: "Board Chair & President",
-    name: "Tatyana Lance, MBA, MSN, MSW, LMSW, LCSW-A",
+    name: "Tatyana Lance, MBA, MSN, RN, MSW, LMSW, LCSW-A",
     photo: "assets/Taty.jpeg",
     alt: "Tatyana Lance",
     email: "tlance@cltimmons.org",
@@ -261,7 +261,7 @@ const officerProfiles = {
   },
   health: {
     role: "Director of Health & Clinical Partnerships",
-    name: "Shearia Burch-McElveen, MSN",
+    name: "Shearia Burch-McElveen, MSN, RN",
     photo: "assets/Shearia.jpg",
     alt: "Shearia Burch-McElveen",
     email: "admin@cltimmons.org",
