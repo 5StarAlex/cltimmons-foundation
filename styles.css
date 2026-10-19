@@ -340,6 +340,10 @@ a {
   transition: opacity 260ms ease, visibility 260ms ease;
 }
 
+.poster-modal[hidden] {
+  display: none !important;
+}
+
 .poster-modal.is-visible {
   opacity: 1;
   visibility: visible;
