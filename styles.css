@@ -2604,3 +2604,68 @@ body.modal-open {
     transition: none;
   }
 }
+/* Cathy’s Closet event recap and impact story */
+.closet-news-panel { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(420px, .95fr); min-height: 650px; background: var(--burgundy-deep); color: #fffaf3; }
+.closet-news-image { min-height: 520px; overflow: hidden; }
+.closet-news-image img { width: 100%; height: 100%; object-fit: cover; }
+.closet-news-copy { align-self: center; padding: clamp(48px, 6vw, 96px); }
+.closet-news-copy .eyebrow { color: #f0c875; }
+.closet-news-copy h1 { margin: 0 0 24px; color: #fffaf3; font-size: clamp(42px, 4.5vw, 74px); line-height: 1.02; }
+.closet-news-copy p { font-size: 17px; line-height: 1.75; }
+.news-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.news-meta span { padding: 8px 12px; border: 1px solid rgba(240,200,117,.45); border-radius: 999px; color: #f8dfac; font-size: 13px; font-weight: 800; }
+.closet-stats-section { background: #fffaf2; }
+.event-stat-layout { display: grid; grid-template-columns: 1.05fr .9fr 1.3fr; gap: 24px; margin-top: 34px; align-items: stretch; }
+.event-stat-feature, .event-stat-stack article { display: flex; flex-direction: column; justify-content: center; padding: 36px; background: var(--burgundy); color: white; border-radius: 8px; }
+.event-stat-feature strong { font: 700 clamp(82px, 10vw, 150px)/.8 "Cormorant Garamond", serif; color: #f0c875; }
+.event-stat-feature span, .event-stat-stack span { margin-top: 16px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.event-stat-stack { display: grid; gap: 24px; }
+.event-stat-stack strong { font: 700 58px/1 "Cormorant Garamond", serif; color: #f0c875; }
+.event-stat-stack small { margin-top: 8px; color: #f5d9a5; }
+.event-stat-photo { margin: 0; overflow: hidden; border-radius: 8px; background: var(--cream-2); }
+.event-stat-photo img { width: 100%; height: calc(100% - 48px); min-height: 340px; object-fit: cover; }
+.event-stat-photo figcaption, .closet-gallery figcaption { padding: 12px 16px; color: var(--muted); font-size: 14px; font-weight: 700; }
+.story-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(38px, 6vw, 86px); align-items: center; }
+.story-photo { min-height: 560px; overflow: hidden; border-radius: 8px; box-shadow: var(--shadow); }
+.story-photo img { width: 100%; height: 100%; min-height: 560px; object-fit: cover; }
+.closet-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 34px; }
+.closet-gallery figure { margin: 0; overflow: hidden; background: #fff; border-radius: 8px; box-shadow: 0 12px 34px rgba(57,16,9,.12); }
+.closet-gallery img { width: 100%; height: 390px; object-fit: cover; }
+.closet-gallery .gallery-wide { grid-column: span 2; }
+.closet-gallery .gallery-wide img { height: 430px; }
+.event-metric-grid { grid-template-columns: 1.35fr repeat(3, 1fr); }
+.metric-primary { background: var(--burgundy); color: white; }
+.metric-primary strong { color: #f0c875; }
+.media-credit { margin: 24px 0 18px; }
+.impact-letter-section { background: #fffaf2; }
+.impact-letter-layout { display: grid; grid-template-columns: minmax(320px, .8fr) minmax(0, 1.2fr); gap: clamp(42px, 7vw, 100px); align-items: start; }
+.impact-letter-visual { position: sticky; top: 130px; }
+.impact-letter-visual img { width: 100%; max-height: 650px; object-fit: cover; border-radius: 8px; box-shadow: var(--shadow); }
+.impact-letter-numbers { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 16px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.impact-letter-numbers span { padding: 16px 10px; text-align: center; font-size: 12px; text-transform: uppercase; }
+.impact-letter-numbers span + span { border-left: 1px solid var(--line); }
+.impact-letter-numbers strong { display: block; color: var(--burgundy); font: 700 34px/1 "Cormorant Garamond", serif; }
+.impact-letter p { font-size: 18px; line-height: 1.8; }
+.letter-signature { margin-top: 30px; padding-top: 24px; border-top: 1px solid var(--line); }
+.letter-signature strong, .letter-signature span { display: block; }
+.letter-signature strong { color: var(--burgundy); font: 700 30px/1.2 "Cormorant Garamond", serif; }
+.letter-signature span { font-size: 14px; font-weight: 800; }
+@media (max-width: 900px) {
+  .closet-news-panel, .story-split, .impact-letter-layout { grid-template-columns: 1fr; }
+  .closet-news-panel { min-height: 0; }
+  .closet-news-image { min-height: 390px; }
+  .closet-news-copy { padding: 42px 24px 52px; }
+  .event-stat-layout { grid-template-columns: 1fr 1fr; }
+  .event-stat-photo { grid-column: 1 / -1; }
+  .closet-gallery { grid-template-columns: 1fr 1fr; }
+  .impact-letter-visual { position: static; }
+  .event-metric-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .event-stat-layout, .closet-gallery, .event-metric-grid { grid-template-columns: 1fr; }
+  .closet-gallery .gallery-wide { grid-column: auto; }
+  .closet-gallery img, .closet-gallery .gallery-wide img { height: 340px; }
+  .event-stat-photo { grid-column: auto; }
+  .impact-letter-numbers { grid-template-columns: 1fr; }
+  .impact-letter-numbers span + span { border-left: 0; border-top: 1px solid var(--line); }
+}
