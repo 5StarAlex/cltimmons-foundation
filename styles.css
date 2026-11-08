@@ -2605,16 +2605,16 @@ body.modal-open {
   }
 }
 /* Cathy’s Closet event recap and impact story */
-.closet-news-panel { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(400px, .88fr); height: min(610px, calc(100vh - 106px)); min-height: 520px; background: var(--burgundy-deep); color: #fffaf3; }
-.closet-news-image { min-height: 0; overflow: hidden; }
-.closet-news-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 54%; }
-.closet-news-copy { align-self: center; padding: clamp(34px, 4vw, 62px); }
+.closet-news-panel { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(420px, .95fr); min-height: 610px; background: var(--burgundy-deep); color: #fffaf3; }
+.closet-news-image { min-height: 490px; overflow: hidden; }
+.closet-news-image img { width: 100%; height: 100%; object-fit: cover; }
+.closet-news-copy { align-self: center; padding: clamp(42px, 5vw, 76px); }
 .closet-news-copy .eyebrow { color: #f0c875; }
-.closet-news-copy h1 { margin: 0 0 18px; color: #fffaf3; font-size: clamp(38px, 3.7vw, 60px); line-height: 1.02; }
-.closet-news-copy p { margin: 0; font-size: 16px; line-height: 1.6; }
+.closet-news-copy h1 { margin: 0 0 20px; color: #fffaf3; font-size: clamp(40px, 4.1vw, 68px); line-height: 1.02; }
+.closet-news-copy p { font-size: 16px; line-height: 1.68; }
 .news-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
 .news-meta span { padding: 8px 12px; border: 1px solid rgba(240,200,117,.45); border-radius: 999px; color: #f8dfac; font-size: 13px; font-weight: 800; }
-.news-coverage-button { margin-top: 22px; }
+.news-coverage-button { margin-top: 24px; }
 .closet-stats-section { background: #fffaf2; }
 .event-stat-layout { display: grid; grid-template-columns: 1.05fr .9fr 1.3fr; gap: 24px; margin-top: 34px; align-items: stretch; }
 .event-stat-feature, .event-stat-stack article { display: flex; flex-direction: column; justify-content: center; padding: 36px; background: var(--burgundy); color: white; border-radius: 8px; }
@@ -2676,8 +2676,8 @@ body.modal-open {
 .letter-signature span { font-size: 14px; font-weight: 800; }
 @media (max-width: 900px) {
   .closet-news-panel, .story-split, .impact-letter-layout { grid-template-columns: 1fr; }
-  .closet-news-panel { height: auto; min-height: 0; }
-  .closet-news-image { min-height: 340px; }
+  .closet-news-panel { min-height: 0; }
+  .closet-news-image { min-height: 370px; }
   .closet-news-copy { padding: 42px 24px 52px; }
   .event-stat-layout { grid-template-columns: 1fr 1fr; }
   .event-stat-photo { grid-column: 1 / -1; }
