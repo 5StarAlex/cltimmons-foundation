@@ -104,7 +104,7 @@ function renderFlyer(index) {
 }
 
 function openPosterModal() {
-  if (!posterModal || posterModal.hasAttribute("hidden")) return;
+  if (!posterModal) return;
 
   renderFlyer(activeFlyerIndex);
   posterModal.setAttribute("aria-hidden", "false");
